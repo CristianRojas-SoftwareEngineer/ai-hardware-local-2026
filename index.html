@@ -3,8 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="theme-color" content="#070a12">
-<meta name="description" content="Guía técnica y comparador interactivo de hardware para IA local y agentes de código (Claude Code, OpenCode) en Chile. Top 3 en 5 dimensiones con precios en CLP y USD.">
+<meta name="description" content="Guía interactiva y comparativa de hardware para IA local y agentes de código (Claude Code, OpenCode) en Chile. Top 3 en 5 dimensiones con precios en CLP y USD.">
 <title>Hardware para IA Local & Agentes de Código · Guía Chile 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +41,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; color-scheme: dark; }
+html { scroll-behavior: smooth; color-scheme: dark; overflow-x: hidden; }
 
 body {
   background-color: var(--bg);
@@ -53,10 +56,11 @@ body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .container {
-  width: min(1200px, 100% - 36px);
+  width: min(1200px, 100% - 32px);
   margin: 0 auto;
 }
 
@@ -91,7 +95,7 @@ header {
 
 .nav-links {
   display: flex;
-  gap: 18px;
+  gap: 16px;
   align-items: center;
   list-style: none;
 }
@@ -99,21 +103,22 @@ header {
 .nav-links a {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 500;
   transition: color 0.2s;
 }
 
 .nav-links a:hover { color: var(--brand-cyan); }
 
-@media (max-width: 768px) {
+@media (max-width: 820px) {
   .nav-links { display: none; }
 }
 
 .fx-controls {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .fx-pill {
@@ -122,9 +127,9 @@ header {
   gap: 8px;
   background: var(--surface-1);
   border: 1px solid var(--border);
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: var(--radius-full);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-family: var(--font-mono);
   color: var(--text-muted);
 }
@@ -144,9 +149,9 @@ header {
   border: none;
   color: var(--text-muted);
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  padding: 5px 14px;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
   cursor: pointer;
   transition: all 0.2s ease;
@@ -160,19 +165,19 @@ header {
 
 /* Hero Section */
 .hero {
-  padding: 36px 0 44px;
+  padding: 32px 0 44px;
   display: grid;
   grid-template-columns: 1.3fr 0.9fr;
-  gap: 40px;
+  gap: 36px;
   align-items: center;
 }
 
 @media (max-width: 960px) {
-  .hero { grid-template-columns: 1fr; gap: 32px; padding: 24px 0 36px; }
+  .hero { grid-template-columns: 1fr; gap: 28px; padding: 20px 0 32px; }
 }
 
 .hero-content h1 {
-  font-size: clamp(2.2rem, 4.8vw, 3.6rem);
+  font-size: clamp(2.1rem, 4.5vw, 3.5rem);
   line-height: 1.1;
   letter-spacing: -0.03em;
   font-weight: 800;
@@ -186,7 +191,7 @@ header {
 }
 
 .hero-lead {
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   color: var(--text-muted);
   max-width: 58ch;
   margin-bottom: 24px;
@@ -205,9 +210,9 @@ header {
   gap: 7px;
   background: var(--surface-1);
   border: 1px solid var(--border);
-  padding: 7px 14px;
+  padding: 7px 12px;
   border-radius: var(--radius-md);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   color: var(--text-main);
   font-weight: 500;
 }
@@ -258,7 +263,7 @@ header {
 }
 
 .stat-val {
-  font-size: 1.55rem;
+  font-size: 1.5rem;
   font-weight: 800;
   font-family: var(--font-mono);
   color: var(--text-main);
@@ -279,12 +284,12 @@ header {
 
 /* Sections Global */
 section {
-  padding: 56px 0;
+  padding: 50px 0;
   border-top: 1px solid var(--border);
 }
 
 .section-header {
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .section-tag {
@@ -299,30 +304,30 @@ section {
 }
 
 .section-title {
-  font-size: clamp(1.75rem, 3.2vw, 2.4rem);
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .section-desc {
   color: var(--text-muted);
-  font-size: 1.02rem;
+  font-size: 1rem;
   max-width: 68ch;
 }
 
 /* Dictionary Cards */
 .dict-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
 }
 
 .dict-card {
   background: var(--surface-1);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 22px;
+  padding: 20px;
   position: relative;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
@@ -333,8 +338,8 @@ section {
 }
 
 .dict-icon-wrap {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-sm);
   background: rgba(56, 189, 248, 0.1);
   border: 1px solid rgba(56, 189, 248, 0.25);
@@ -342,38 +347,45 @@ section {
   align-items: center;
   justify-content: center;
   color: var(--brand-cyan);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .dict-term {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-main);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .dict-analogy {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--brand-emerald);
   font-family: var(--font-mono);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .dict-desc {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--text-muted);
-  line-height: 1.5;
+  line-height: 1.48;
 }
 
-/* Master Dimension Tabs */
+/* Responsive Grid for Dimensions (NO HORIZONTAL OVERFLOW) */
 .dim-nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
-  margin-bottom: 24px;
-  overflow-x: auto;
-  padding-bottom: 6px;
-  scrollbar-width: thin;
+  margin-bottom: 22px;
+}
+
+@media (max-width: 1080px) {
+  .dim-nav { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .dim-nav { grid-template-columns: 1fr 1fr; }
+  .dim-nav button:last-child { grid-column: span 2; }
 }
 
 .dim-tab-btn {
@@ -381,16 +393,18 @@ section {
   border: 1px solid var(--border);
   color: var(--text-muted);
   font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-size: 0.86rem;
   font-weight: 600;
-  padding: 12px 18px;
+  padding: 12px 14px;
   border-radius: var(--radius-md);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 10px;
-  white-space: nowrap;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
   transition: all 0.2s ease;
+  width: 100%;
 }
 
 .dim-tab-btn:hover {
@@ -403,7 +417,7 @@ section {
   background: var(--surface-2);
   color: var(--brand-cyan);
   border-color: var(--brand-cyan);
-  box-shadow: 0 0 20px -5px rgba(56, 189, 248, 0.25);
+  box-shadow: 0 0 16px -4px rgba(56, 189, 248, 0.35);
 }
 
 /* Sync Notification Banner */
@@ -411,14 +425,14 @@ section {
   background: rgba(56, 189, 248, 0.08);
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: var(--radius-md);
-  padding: 12px 18px;
-  margin-bottom: 24px;
+  padding: 12px 16px;
+  margin-bottom: 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
-  font-size: 0.88rem;
+  gap: 10px;
+  font-size: 0.86rem;
   color: var(--brand-cyan);
 }
 
@@ -427,15 +441,15 @@ section {
 /* Dimension Cards Grid (Top 3) */
 .card-grid-3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 .dim-card {
   background: var(--surface-1);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -455,12 +469,12 @@ section {
 
 .badge-pill {
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 16px;
+  right: 16px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 4px 8px;
   border-radius: var(--radius-full);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -473,23 +487,23 @@ section {
 
 .card-kicker {
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   color: var(--text-dim);
   font-weight: 700;
   margin-bottom: 4px;
 }
 
 .card-title-lg {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 800;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .card-sub {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--brand-cyan);
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .price-box-mini {
@@ -497,7 +511,7 @@ section {
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 12px 14px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .price-line {
@@ -508,15 +522,15 @@ section {
 }
 .price-line:last-child { margin-bottom: 0; }
 
-.price-lbl { font-size: 0.76rem; color: var(--text-muted); }
-.price-num { font-family: var(--font-mono); font-weight: 700; font-size: 1.1rem; color: var(--text-main); }
-.price-num.green { color: var(--brand-emerald); font-size: 1.25rem; }
+.price-lbl { font-size: 0.74rem; color: var(--text-muted); }
+.price-num { font-family: var(--font-mono); font-weight: 700; font-size: 1.05rem; color: var(--text-main); }
+.price-num.green { color: var(--brand-emerald); font-size: 1.2rem; }
 
 .specs-grid-mini {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .spec-cell {
@@ -527,7 +541,7 @@ section {
 }
 
 .spec-cell-lbl {
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   color: var(--text-dim);
   text-transform: uppercase;
   font-family: var(--font-mono);
@@ -536,23 +550,23 @@ section {
 
 .spec-cell-val {
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--text-main);
 }
 
 .bullet-list {
   list-style: none;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   flex-grow: 1;
 }
 
 .bullet-list li {
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
-  padding-left: 20px;
+  padding-left: 18px;
   position: relative;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
   line-height: 1.45;
 }
 
@@ -565,10 +579,10 @@ section {
 }
 
 .card-footer-tip {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   color: var(--text-dim);
   border-top: 1px solid var(--border);
-  padding-top: 12px;
+  padding-top: 10px;
   line-height: 1.4;
 }
 
@@ -577,23 +591,23 @@ section {
   background: var(--surface-1);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 28px;
+  padding: 26px;
   box-shadow: var(--shadow-glow);
 }
 
 .sim-controls-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 18px;
-  margin-bottom: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
 }
 
 .control-group label {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-family: var(--font-mono);
   color: var(--text-muted);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -603,10 +617,10 @@ section {
   background: var(--surface-2);
   border: 1px solid var(--border);
   color: var(--text-main);
-  padding: 12px 14px;
+  padding: 10px 12px;
   border-radius: var(--radius-md);
   font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   outline: none;
@@ -619,15 +633,15 @@ section {
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 12px 16px;
+  padding: 10px 14px;
 }
 
 .slider-head {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--brand-cyan);
 }
@@ -645,14 +659,14 @@ section {
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 12px 16px;
+  padding: 10px 14px;
   cursor: pointer;
-  height: 48px;
+  height: 44px;
 }
 
 .toggle-wrap input {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   accent-color: var(--brand-cyan);
 }
 
@@ -661,14 +675,14 @@ section {
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 22px;
+  padding: 20px;
 }
 
 .sim-results-grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr;
-  gap: 18px;
-  margin-bottom: 20px;
+  gap: 16px;
+  margin-bottom: 18px;
 }
 
 @media (max-width: 860px) {
@@ -679,7 +693,7 @@ section {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 16px;
+  padding: 14px;
 }
 
 .res-card.hero-stat {
@@ -688,7 +702,7 @@ section {
 }
 
 .res-lbl {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-family: var(--font-mono);
   text-transform: uppercase;
   color: var(--text-muted);
@@ -696,7 +710,7 @@ section {
 }
 
 .res-val {
-  font-size: 2rem;
+  font-size: 1.85rem;
   font-family: var(--font-mono);
   font-weight: 800;
   color: var(--text-main);
@@ -707,25 +721,25 @@ section {
 .res-val.emerald { color: var(--brand-emerald); }
 
 .res-sub {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   margin-top: 4px;
 }
 
 /* Memory Bar Gauge */
-.vram-bar-container { margin-top: 14px; }
+.vram-bar-container { margin-top: 12px; }
 
 .vram-labels {
   display: flex;
   justify-content: space-between;
   font-family: var(--font-mono);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   margin-bottom: 6px;
 }
 
 .vram-bar {
-  height: 22px;
+  height: 20px;
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
@@ -746,9 +760,9 @@ section {
 .vram-legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 10px;
-  font-size: 0.78rem;
+  gap: 14px;
+  margin-top: 8px;
+  font-size: 0.76rem;
   font-family: var(--font-mono);
   color: var(--text-muted);
 }
@@ -760,8 +774,8 @@ section {
 }
 
 .legend-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 2px;
 }
 
@@ -777,15 +791,15 @@ section {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.9rem;
-  min-width: 700px;
+  font-size: 0.88rem;
+  min-width: 680px;
 }
 
 .parts-table th {
   background: var(--surface-2);
   padding: 12px 16px;
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
   color: var(--text-muted);
   border-bottom: 1px solid var(--border);
@@ -801,16 +815,16 @@ section {
 .parts-table tr:hover { background: rgba(255, 255, 255, 0.02); }
 
 .part-name { font-weight: 600; color: var(--text-main); }
-.part-vendor { font-size: 0.8rem; color: var(--text-dim); }
+.part-vendor { font-size: 0.78rem; color: var(--text-dim); }
 
 .badge-store {
   display: inline-block;
-  padding: 3px 8px;
+  padding: 2px 7px;
   border-radius: var(--radius-full);
   background: var(--surface-2);
   border: 1px solid var(--border);
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--brand-cyan);
 }
 
@@ -824,20 +838,20 @@ section {
 /* Guide Cards (Coding Agents) */
 .guide-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
 }
 
 .guide-card {
   background: var(--surface-1);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 22px;
+  padding: 20px;
 }
 
 .guide-icon {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   background: rgba(56, 189, 248, 0.1);
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: var(--radius-md);
@@ -845,29 +859,29 @@ section {
   align-items: center;
   justify-content: center;
   color: var(--brand-cyan);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .guide-title {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 6px;
 }
 
 .guide-desc {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--text-muted);
-  line-height: 1.5;
-  margin-bottom: 12px;
+  line-height: 1.48;
+  margin-bottom: 10px;
 }
 
 .code-box {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 12px 14px;
+  padding: 10px 12px;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--brand-cyan);
   overflow-x: auto;
   position: relative;
@@ -875,14 +889,14 @@ section {
 
 .copy-btn {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 6px;
+  right: 6px;
   background: var(--surface-2);
   border: 1px solid var(--border);
   color: var(--text-muted);
   border-radius: 6px;
-  padding: 4px 8px;
-  font-size: 0.72rem;
+  padding: 3px 7px;
+  font-size: 0.7rem;
   cursor: pointer;
   font-family: var(--font-mono);
 }
@@ -894,10 +908,10 @@ section {
 
 /* Footer */
 footer {
-  padding: 44px 0 60px;
+  padding: 40px 0 50px;
   border-top: 1px solid var(--border);
   color: var(--text-dim);
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   text-align: center;
 }
 
@@ -1052,7 +1066,7 @@ footer a:hover { text-decoration: underline; }
       </p>
     </div>
 
-    <!-- Master Dimension Tabs -->
+    <!-- Master Dimension Tabs (Responsive Grid, Zero Scroll) -->
     <div class="dim-nav">
       <button class="dim-tab-btn active" id="tab-balance" onclick="selectGlobalDimension('balance')">
         <span>⚖️</span> 1. La Mejor Balanceada
