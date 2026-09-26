@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0f19">
+<title>Hardware para IA local · 2026</title>
+<style>
+:root{
+  --bg:#080b12;--panel:#101521;--panel2:#151b29;--text:#f5f7fb;--muted:#9ca7ba;
+  --line:#252d3d;--accent:#7dd3fc;--accent2:#a78bfa;--good:#86efac;--warn:#fcd34d;
+  --shadow:0 18px 60px rgba(0,0,0,.28);--radius:22px
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(900px 500px at 15% -10%,#18233b 0,transparent 65%),var(--bg);
+color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.container{width:min(1120px,calc(100% - 32px));margin:auto}
+header{padding:64px 0 32px}
+.eyebrow{display:inline-flex;padding:7px 11px;border:1px solid var(--line);border-radius:999px;color:var(--accent);font-size:.82rem;background:#0d1320}
+h1{font-size:clamp(2.3rem,6vw,4.8rem);line-height:.98;letter-spacing:-.055em;margin:20px 0 18px;max-width:850px}
+.lead{font-size:1.08rem;color:var(--muted);max-width:780px}
+.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.chip{border:1px solid var(--line);background:#0d121d;padding:7px 10px;border-radius:10px;color:#cbd5e1;font-size:.82rem}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin:28px 0 52px}
+.hero-card,.card{background:linear-gradient(145deg,rgba(21,27,41,.96),rgba(13,18,29,.96));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.hero-card{padding:28px}
+.hero-card h2{margin:0 0 12px;font-size:1.2rem}.hero-card p{margin:0;color:var(--muted)}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.stat{background:#0b101a;border:1px solid var(--line);border-radius:16px;padding:16px}
+.stat b{display:block;font-size:1.35rem}.stat span{color:var(--muted);font-size:.82rem}
+section{margin:58px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}
+h2{font-size:1.8rem;letter-spacing:-.03em;margin:0}.section-head p{margin:0;color:var(--muted);max-width:620px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{padding:22px;position:relative;overflow:hidden}
+.card .rank{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.card h3{font-size:1.4rem;margin:8px 0 4px}.subtitle{color:var(--accent);font-weight:600}
+.price{font-size:1.25rem;font-weight:800;margin:16px 0}
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0}
+.spec{background:#0b101a;border-radius:12px;padding:10px}.spec small{display:block;color:var(--muted);font-size:.72rem}.spec strong{font-size:.95rem}
+.card ul{padding-left:18px;color:#cbd5e1}.card li{margin:7px 0}
+.badge{display:inline-block;padding:5px 8px;border-radius:8px;background:#162337;color:#bae6fd;font-size:.75rem}
+.note{font-size:.78rem;color:var(--muted)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}
+table{width:100%;border-collapse:collapse;min-width:760px;background:#0d121d}
+th,td{padding:14px 15px;text-align:left;border-bottom:1px solid var(--line)}th{color:#aeb9cb;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}td{font-size:.9rem}
+tr:last-child td{border-bottom:0}
+.benchmark{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bench{padding:20px;border:1px solid var(--line);border-radius:18px;background:#0d121d}.bench h3{margin:0 0 8px}.bench .big{font-size:2rem;font-weight:850}.bench p{color:var(--muted);margin:4px 0 0;font-size:.88rem}
+.sources{display:grid;grid-template-columns:1fr 1fr;gap:12px}.source{padding:16px;border:1px solid var(--line);border-radius:16px;background:#0d121d}.source b{display:block;margin-bottom:5px}.source span{font-size:.82rem;color:var(--muted)}
+.disclaimer{padding:20px;border:1px solid #3a3320;background:#17140d;border-radius:18px;color:#d8cfb6;font-size:.85rem}
+footer{padding:35px 0 60px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.btn{border:1px solid var(--line);background:#111827;color:#fff;border-radius:11px;padding:10px 13px;cursor:pointer;font-weight:650}.btn.primary{background:#e5f6ff;color:#08111c;border-color:#e5f6ff}
+@media(max-width:850px){.hero-grid,.cards,.benchmark,.sources{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:8px}.hero-card{padding:22px}header{padding-top:40px}}
+@media(max-width:520px){.container{width:min(100% - 22px,1120px)}h1{font-size:2.65rem}.stat-grid{grid-template-columns:1fr 1fr}.card{padding:18px}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <span class="eyebrow">Comparativa técnica · Chile · septiembre 2026</span>
+  <h1>Hardware para IA local</h1>
+  <p class="lead">Tres configuraciones para ejecutar modelos locales de aproximadamente 27–35B parámetros, con foco en velocidad de inferencia, memoria disponible y coste de entrada.</p>
+  <div class="meta">
+    <span class="chip">Qwen3.8-27B</span><span class="chip">Ornith 1.5-35B-A3B</span><span class="chip">LLM local</span><span class="chip">Claude Code / agentes</span>
+  </div>
+  <div class="actions"><button class="btn primary" onclick="sharePage()">Compartir</button><button class="btn" onclick="window.print()">Imprimir / PDF</button></div>
+</header>
+
+<div class="hero-grid">
+  <div class="hero-card">
+    <h2>La pregunta clave</h2>
+    <p>No existe una única solución óptima: una GPU dedicada prioriza tokens/s cuando el modelo cabe en VRAM; una APU con memoria unificada sacrifica velocidad para ofrecer mucha más capacidad de modelos.</p>
+  </div>
+  <div class="hero-card">
+    <div class="stat-grid">
+      <div class="stat"><b>32 GB</b><span>VRAM RTX 5090</span></div>
+      <div class="stat"><b>128 GB</b><span>memoria EVO-X2</span></div>
+      <div class="stat"><b>24 GB</b><span>VRAM RTX 3090</span></div>
+      <div class="stat"><b>27–35B</b><span>clase de modelos</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="options">
+<div class="section-head"><div><h2>Las 3 configuraciones</h2><p>Ordenadas de mayor a menor inversión de referencia. Los precios son observaciones de mercado, no precios garantizados.</p></div></div>
+<div class="cards">
+  <article class="card">
+    <span class="rank">01 · Máxima velocidad</span>
+    <h3>RTX 5090 32 GB</h3><div class="subtitle">GPU dedicada · Blackwell</div>
+    <div class="price">≈ $4,0–5,0 M CLP <span class="note">GPU</span></div>
+    <div class="specs"><div class="spec"><small>Memoria</small><strong>32 GB GDDR7</strong></div><div class="spec"><small>Bandwidth</small><strong>1.792 GB/s</strong></div><div class="spec"><small>CUDA</small><strong>21.760</strong></div><div class="spec"><small>Arquitectura</small><strong>Blackwell</strong></div></div>
+    <span class="badge">Máxima velocidad</span>
+    <ul><li>La alternativa con mayor ancho de banda de las tres.</li><li>32 GB permiten ejecutar cómodamente muchos modelos 27–35B cuantizados.</li><li>Requiere un PC, fuente y refrigeración adecuados.</li></ul>
+    <p class="note">Precio observado en Chile: desde $4.599.500 para un modelo ASUS RTX 5090 32 GB en SoloTodo al momento de la consulta.</p>
+  </article>
+  <article class="card">
+    <span class="rank">02 · Capacidad / formato</span>
+    <h3>GMKtec EVO-X2</h3><div class="subtitle">Ryzen AI Max+ 395 · 128 GB</div>
+    <div class="price">US$2.199,99 <span class="note">precio oficial consultado</span></div>
+    <div class="specs"><div class="spec"><small>Memoria</small><strong>128 GB LPDDR5X</strong></div><div class="spec"><small>Bandwidth</small><strong>256-bit LPDDR5X</strong></div><div class="spec"><small>GPU</small><strong>Radeon 8060S</strong></div><div class="spec"><small>CPU</small><strong>16C / 32T</strong></div></div>
+    <span class="badge">Mini-PC + memoria</span>
+    <ul><li>Muchísima más memoria accesible para modelos grandes.</li><li>Formato compacto y consumo muy inferior a una GPU dedicada de gama alta.</li><li>Menor velocidad absoluta que una RTX 5090 en los benchmarks consultados.</li></ul>
+    <p class="note">GMKtec publica la configuración de 128 GB y anuncia soporte local para modelos mucho mayores que 35B.</p>
+  </article>
+  <article class="card">
+    <span class="rank">03 · Entrada económica</span>
+    <h3>RTX 3090 24 GB</h3><div class="subtitle">GPU dedicada · Ampere</div>
+    <div class="price">≈ $700k–990k CLP <span class="note">usada</span></div>
+    <div class="specs"><div class="spec"><small>Memoria</small><strong>24 GB GDDR6X</strong></div><div class="spec"><small>Bus</small><strong>384-bit</strong></div><div class="spec"><small>CUDA</small><strong>10.496</strong></div><div class="spec"><small>Arquitectura</small><strong>Ampere</strong></div></div>
+    <span class="badge">Coste de entrada</span>
+    <ul><li>24 GB siguen siendo suficientes para muchos modelos 27–35B cuantizados.</li><li>Ecosistema CUDA muy maduro.</li><li>Al ser usada, hay que verificar estado, temperaturas y garantía.</li></ul>
+    <p class="note">Se observaron anuncios de $700.000 y $990.000 CLP en Santiago durante septiembre de 2026.</p>
+  </article>
+</div>
+</section>
+
+<section>
+<div class="section-head"><div><h2>Rendimiento publicado</h2><p>Los números provienen de pruebas independientes. No deben interpretarse como un benchmark controlado entre las tres plataformas.</p></div></div>
+<div class="benchmark">
+  <div class="bench"><h3>RTX 5090 · Ornith 1.5-35B-A3B</h3><div class="big">273,2 tok/s</div><p>llama.cpp · Q4_K_M · full GPU offload · RTX 5090 32 GB.</p><p class="note">La misma prueba reportó 77,2 tok/s para Qwen3.8-27B.</p></div>
+  <div class="bench"><h3>EVO-X2 · Qwen3.8-27B</h3><div class="big">16,45 tok/s</div><p>Promedio sostenido de 512 tokens a 128K de contexto; Vulkan, full GPU offload, UD-Q5_K_XL y MTP.</p><p class="note">El mismo estudio observó ventanas de 23–26 tok/s durante pasos individuales de agente.</p></div>
+  <div class="bench"><h3>EVO-X2 · Ornith 1.5-35B-A3B</h3><div class="big">76,9 tok/s</div><p>ROCm FP4, prueba publicada para Ryzen AI Max+ 395. Una configuración con MTP reportó 105,6 tok/s efectivos.</p><p class="note">Son resultados de una implementación específica sobre Strix Halo.</p></div>
+  <div class="bench"><h3>RTX 5090 · Qwen3.8-27B</h3><div class="big">77,2 tok/s</div><p>llama.cpp · Q4_K_M · full GPU offload · f16 KV cache.</p><p class="note">Otra medición independiente con Q6_K reportó 63,08 tok/s; con vLLM NVFP4+MTP, 119,79 tok/s.</p></div>
+</div>
+</section>
+
+<section>
+<div class="section-head"><div><h2>Comparación</h2><p>Las especificaciones son directamente comparables; los benchmarks no necesariamente.</p></div></div>
+<div class="table-wrap"><table>
+<thead><tr><th>Característica</th><th>RTX 5090</th><th>EVO-X2 128 GB</th><th>RTX 3090</th></tr></thead>
+<tbody>
+<tr><td>Tipo</td><td>GPU dedicada</td><td>Mini-PC / APU</td><td>GPU dedicada</td></tr>
+<tr><td>Memoria</td><td>32 GB GDDR7</td><td>128 GB LPDDR5X</td><td>24 GB GDDR6X</td></tr>
+<tr><td>Ancho de banda</td><td>1.792 GB/s</td><td>256 GB/s</td><td>≈936 GB/s</td></tr>
+<tr><td>Modelo de referencia</td><td>Blackwell</td><td>Strix Halo</td><td>Ampere</td></tr>
+<tr><td>Precio observado</td><td>≈ $4,0–5,0 M CLP</td><td>US$2.199,99</td><td>≈ $700k–990k CLP usada</td></tr>
+<tr><td>Ornith 35B</td><td>273,2 tok/s*</td><td>76,9–105,6 tok/s**</td><td>Sin prueba homogénea</td></tr>
+<tr><td>Qwen3.8-27B</td><td>77,2 tok/s*</td><td>16,45 tok/s**</td><td>Sin prueba homogénea</td></tr>
+<tr><td>Formato</td><td>Desktop</td><td>Mini-PC</td><td>Desktop</td></tr>
+</tbody></table></div>
+<p class="note" style="margin-top:10px">* RTX 5090: llama.cpp/Q4_K_M/full offload. ** EVO-X2: pruebas publicadas con configuraciones y cuantizaciones específicas. Los resultados no constituyen un benchmark cruzado.</p>
+</section>
+
+<section>
+<div class="section-head"><div><h2>¿Qué significa en la práctica?</h2></div></div>
+<div class="hero-grid">
+  <div class="hero-card"><h2>RTX 5090</h2><p>Si el objetivo principal es maximizar tokens/s en modelos que caben en 32 GB, la combinación de 32 GB GDDR7 y 1.792 GB/s ofrece la mayor capacidad de ancho de banda de estas opciones.</p></div>
+  <div class="hero-card"><h2>EVO-X2</h2><p>Si el objetivo es disponer de mucha memoria en un equipo pequeño para experimentar con modelos que superan la VRAM típica de una GPU, los 128 GB unificados cambian el espacio de posibilidades.</p></div>
+  <div class="hero-card"><h2>RTX 3090</h2><p>Si el presupuesto es el factor dominante y los modelos caben en 24 GB, una 3090 usada proporciona una entrada de bajo coste a CUDA y a la inferencia GPU local.</p></div>
+  <div class="hero-card"><h2>Para agentes</h2><p>La velocidad de generación no es la única variable: contexto, KV cache, prompt processing, concurrencia y reutilización de KV pueden cambiar mucho la experiencia real.</p></div>
+</div>
+</section>
+
+<section>
+<div class="section-head"><div><h2>Fuentes verificadas</h2><p>Enlaces directos a especificaciones, precios observados y benchmarks utilizados.</p></div></div>
+<div class="sources">
+  <a class="source" href="https://www.nvidia.com/es-la/geforce/graphics-cards/50-series/rtx-5090/" target="_blank"><b>NVIDIA · RTX 5090</b><span>Especificaciones oficiales: 32 GB GDDR7, 512-bit, Blackwell.</span></a>
+  <a class="source" href="https://www.amd.com/es/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-plus-395.html" target="_blank"><b>AMD · Ryzen AI Max+ 395</b><span>Especificaciones oficiales de Strix Halo, memoria y Radeon 8060S.</span></a>
+  <a class="source" href="https://www.gmktec.com/products/amd-ryzen-ai-max-395-evo-x2-ai-mini-pc" target="_blank"><b>GMKtec · EVO-X2</b><span>Configuraciones, precio oficial y especificaciones del mini-PC.</span></a>
+  <a class="source" href="https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/" target="_blank"><b>NVIDIA · RTX 3090</b><span>Especificaciones oficiales: 24 GB GDDR6X y bus de 384-bit.</span></a>
+  <a class="source" href="https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B/discussions/31" target="_blank"><b>Hugging Face · RTX 5090 benchmark</b><span>Ornith 35B y Qwen3.8-27B en RTX 5090.</span></a>
+  <a class="source" href="https://github.com/erstmalreden/qwen3.8-27b-ryzen-ai-max-395-benchmarks" target="_blank"><b>GitHub · Qwen3.8 en EVO-X2</b><span>Pruebas reproducibles de Qwen3.8-27B sobre Ryzen AI Max+ 395.</span></a>
+  <a class="source" href="https://github.com/julianmb/halofpx/blob/main/docs/BENCHMARKS.md" target="_blank"><b>GitHub · HaloFPX benchmarks</b><span>Benchmarks de Ornith y otros modelos en Strix Halo.</span></a>
+  <a class="source" href="https://test.solotodo.cl/products/269747-asus-rog-astral-geforce-rtx-5090-32gb-gddr7-oc-edition-90yv0lw0-m0aa00-90yv0lw0-mvaa00-rog-astral-rtx5090-o32g-gaming" target="_blank"><b>SoloTodo · RTX 5090 Chile</b><span>Precios observados en tiendas chilenas.</span></a>
+  <a class="source" href="https://www.yapo.cl/electronica-computadora-oficina-computadoras-accesorios/zotac-gaming-geforce-rtx-3090-trinity-oc-24gb/26978201" target="_blank"><b>Yapo · RTX 3090 usada</b><span>Anuncio de $700.000 en Providencia, actualizado 22/09/2026.</span></a>
+</div>
+</section>
+
+<section>
+<div class="disclaimer"><strong>Nota metodológica.</strong> Precios y disponibilidad son observaciones puntuales del mercado y pueden cambiar. Los benchmarks proceden de pruebas independientes con distintas versiones de software, cuantizaciones, contextos y parámetros; por ello se muestran como referencias de rendimiento, no como un ranking científico entre plataformas. Las especificaciones de hardware se contrastan con documentación de los fabricantes.</div>
+</section>
+
+<footer>
+  Comparativa preparada en septiembre de 2026 · Última verificación de fuentes: 26/09/2026.<br>
+  Artefacto estático, sin backend, sin tracking y sin dependencias externas.
+</footer>
+</div>
+<script>
+async function sharePage(){
+  const data={title:document.title,text:"Comparativa de hardware para IA local · 2026",url:location.href};
+  if(navigator.share){try{await navigator.share(data)}catch(e){}}
+  else{try{await navigator.clipboard.writeText(location.href);alert("Enlace copiado al portapapeles.")}catch(e){alert("Copia la URL de esta página para compartirla.")}}
+}
+</script>
+</body>
+</html>
