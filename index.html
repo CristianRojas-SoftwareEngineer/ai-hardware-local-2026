@@ -110,7 +110,7 @@ header {
 
 .nav-links a:hover { color: var(--brand-cyan); }
 
-@media (max-width: 820px) {
+@media (max-width: 860px) {
   .nav-links { display: none; }
 }
 
@@ -316,6 +316,99 @@ section {
   max-width: 68ch;
 }
 
+/* Table of Contents (ToC) Grid */
+.toc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.toc-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s ease;
+}
+
+.toc-card:hover {
+  background: var(--surface-2);
+  border-color: var(--brand-cyan);
+  transform: translateY(-2px);
+}
+
+.toc-num {
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--brand-cyan);
+  background: rgba(56, 189, 248, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.toc-content h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.toc-content p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Intro Pillars */
+.intro-pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.pillar-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.pillar-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-emerald);
+  margin-bottom: 14px;
+}
+
+.pillar-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.pillar-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
 /* Dictionary Cards */
 .dict-grid {
   display: grid;
@@ -438,7 +531,7 @@ section {
 
 .sync-banner span strong { color: var(--text-main); }
 
-/* Dimension Cards Grid (Top 3) */
+/* Dimension Cards Grid (Zero-Overlap In-Flow Headers) */
 .card-grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -467,10 +560,23 @@ section {
   box-shadow: 0 0 35px -10px rgba(56, 189, 248, 0.2);
 }
 
+/* ZERO-OVERLAP CARD HEADER FLEXBOX */
+.dim-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.card-kicker-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .badge-pill {
-  position: absolute;
-  top: 16px;
-  right: 16px;
+  position: static;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 700;
@@ -478,6 +584,8 @@ section {
   border-radius: var(--radius-full);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .badge-pill.cyan { background: rgba(56, 189, 248, 0.15); color: var(--brand-cyan); border: 1px solid rgba(56, 189, 248, 0.3); }
@@ -490,11 +598,10 @@ section {
   font-size: 0.74rem;
   color: var(--text-dim);
   font-weight: 700;
-  margin-bottom: 4px;
 }
 
 .card-title-lg {
-  font-size: 1.35rem;
+  font-size: 1.32rem;
   font-weight: 800;
   margin-bottom: 2px;
 }
@@ -932,6 +1039,7 @@ footer a:hover { text-decoration: underline; }
       </div>
       
       <ul class="nav-links">
+        <li><a href="#intro">Introducción</a></li>
         <li><a href="#diccionario">Conceptos</a></li>
         <li><a href="#dimensiones">Top 3 por Dimensión</a></li>
         <li><a href="#simulador">Simulador</a></li>
@@ -954,7 +1062,7 @@ footer a:hover { text-decoration: underline; }
       <div class="hero-content">
         <h1>Hardware para IA Local & <span class="gradient-text">Agentes de Código</span></h1>
         <p class="hero-lead">
-          Guía técnica y recomendación de compra en Chile basada en benchmarks reales y disponibilidad local. Diseñada para armar un equipo de alta velocidad para <strong>Claude Code</strong>, <strong>OpenCode</strong> y modelos MoE ligeros (Ornith 35B, Qwen 3.8).
+          Guía técnica interactiva para armar tu propia estación de desarrollo con IA en Chile. Basada en benchmarks verificados y tiendas locales para correr <strong>Claude Code</strong>, <strong>OpenCode</strong> y modelos MoE ligeros (Ornith 35B, Qwen 3.8) a máxima velocidad.
         </p>
         <div class="hero-badges">
           <div class="badge-item">
@@ -999,10 +1107,115 @@ footer a:hover { text-decoration: underline; }
     </div>
   </header>
 
-  <!-- Section 1: Non-Expert Dictionary -->
+  <!-- Table of Contents (Índice de Navegación) -->
+  <section style="padding: 36px 0; border-top: none;">
+    <div class="section-header" style="margin-bottom: 16px;">
+      <span class="section-tag">Índice Navegable</span>
+      <h3 style="font-size: 1.35rem; font-weight: 700;">Tabla de Contenidos de la Guía</h3>
+    </div>
+    <div class="toc-grid">
+      <a href="#intro" class="toc-card">
+        <div class="toc-num">01</div>
+        <div class="toc-content">
+          <h4>¿Por qué IA Local en 2026?</h4>
+          <p>Privacidad, costo marginal cero y soberanía.</p>
+        </div>
+      </a>
+      <a href="#diccionario" class="toc-card">
+        <div class="toc-num">02</div>
+        <div class="toc-content">
+          <h4>Conceptos para No Expertos</h4>
+          <p>VRAM, Ancho de Banda, Tokens/s y Contexto.</p>
+        </div>
+      </a>
+      <a href="#dimensiones" class="toc-card">
+        <div class="toc-num">03</div>
+        <div class="toc-content">
+          <h4>Top 3 en 5 Dimensiones</h4>
+          <p>Selector de prioridad con podios reactivos.</p>
+        </div>
+      </a>
+      <a href="#simulador" class="toc-card">
+        <div class="toc-num">04</div>
+        <div class="toc-content">
+          <h4>Simulador de Rendimiento</h4>
+          <p>Calcula tok/s y memoria en tiempo real.</p>
+        </div>
+      </a>
+      <a href="#presupuesto" class="toc-card">
+        <div class="toc-num">05</div>
+        <div class="toc-content">
+          <h4>Cotización de Builds en Chile</h4>
+          <p>Desglose de piezas con tiendas locales (CLP/USD).</p>
+        </div>
+      </a>
+      <a href="#agentes" class="toc-card">
+        <div class="toc-num">06</div>
+        <div class="toc-content">
+          <h4>Setup para Claude Code</h4>
+          <p>Comando optimizado de llama-server y MTP.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Section 01: Why Local AI in 2026? (Intro) -->
+  <section id="intro">
+    <div class="section-header">
+      <span class="section-tag">01 · Introducción & Contexto</span>
+      <h2 class="section-title">¿Por qué Correr IA en Local para Desarrollo?</h2>
+      <p class="section-desc">
+        En 2026, los agentes autónomos de codificación (*Claude Code*, *OpenCode*, *Aider*) ejecutan entre 10 y 50 llamadas consecutivas por tarea. Correrlos en local cambia las reglas del juego.
+      </p>
+    </div>
+
+    <div class="intro-pillars">
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="pillar-title">1. Privacidad y Soberanía Total</h3>
+        <p class="pillar-desc">
+          Tu código propietario, credenciales y monorepos corporativos <strong>nunca salen de tu equipo</strong>. Cero riesgo de telemetría de terceros ni exposición de secretos en la nube.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 class="pillar-title">2. Costo Marginal Cero ($0 / token)</h3>
+        <p class="pillar-desc">
+          Un desarrollador intensivo puede consumir $150–$300 USD mensuales en APIs comerciales. En tu propia máquina, generar <strong>100 millones de tokens cuesta solo la electricidad</strong> (~$10.000 CLP/mes).
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="pillar-title">3. Cero Límites de Cuota (Rate Limits)</h3>
+        <p class="pillar-desc">
+          Olvida los carteles de <em>"ha alcanzado el límite de mensajes por hora"</em>. Tus agentes pueden iterar 24/7 en segundo plano ejecutando tests, refactors y documentación.
+        </p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="pillar-title">4. Modelos Especializados de Código</h3>
+        <p class="pillar-desc">
+          Arquitecturas modernas como <strong>Ornith 35B MoE</strong> (3B activos) o <strong>Qwen 2.5 Coder 32B</strong> superan en benchmarks a modelos comerciales gigantes en tareas de programación.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 02: Non-Expert Dictionary -->
   <section id="diccionario">
     <div class="section-header">
-      <span class="section-tag">01 · Conceptos Esenciales</span>
+      <span class="section-tag">02 · Conceptos Esenciales</span>
       <h2 class="section-title">Diccionario Rápido para Desarrolladores</h2>
       <p class="section-desc">
         Lo que realmente necesitas entender antes de comprar hardware para IA local, explicado con analogías cotidianas y sin tecnicismos innecesarios.
@@ -1056,10 +1269,10 @@ footer a:hover { text-decoration: underline; }
     </div>
   </section>
 
-  <!-- Section 2: Master Dimension Selector & Reactive Podiums -->
+  <!-- Section 03: Master Dimension Selector & Reactive Podiums -->
   <section id="dimensiones">
     <div class="section-header">
-      <span class="section-tag">02 · Selector de Prioridad</span>
+      <span class="section-tag">03 · Selector de Prioridad</span>
       <h2 class="section-title">Top 3 en las 5 Dimensiones de Hardware</h2>
       <p class="section-desc">
         Elige tu prioridad técnica principal. Al hacer clic, <strong>todas las secciones inferiores</strong> (el Podio, el Simulador en Vivo, la Cotización de Piezas y el Setup de Agentes) se adaptarán automáticamente a tu elección.
@@ -1091,16 +1304,16 @@ footer a:hover { text-decoration: underline; }
       <span style="font-family: var(--font-mono); font-size: 0.8rem; opacity: 0.85;">⚡ Estado reactivo global</span>
     </div>
 
-    <!-- Top 3 Container (Dynamically rendered) -->
+    <!-- Top 3 Container (Dynamically rendered with Zero Overlap) -->
     <div class="card-grid-3" id="podium-container">
       <!-- Injected via JavaScript -->
     </div>
   </section>
 
-  <!-- Section 3: Reactive Simulator -->
+  <!-- Section 04: Reactive Simulator -->
   <section id="simulador">
     <div class="section-header">
-      <span class="section-tag">03 · Laboratorio Interactivo</span>
+      <span class="section-tag">04 · Laboratorio Interactivo</span>
       <h2 class="section-title">Simulador de Rendimiento & Memoria</h2>
       <p class="section-desc">
         Proyecta la velocidad exacta de generación (tok/s), el consumo de VRAM y el tiempo de respuesta según el modelo y longitud de contexto que uses.
@@ -1194,10 +1407,10 @@ footer a:hover { text-decoration: underline; }
     </div>
   </section>
 
-  <!-- Section 4: Reactive Bill of Materials (Chile) -->
+  <!-- Section 05: Reactive Bill of Materials (Chile) -->
   <section id="presupuesto">
     <div class="section-header">
-      <span class="section-tag">04 · Presupuesto Sincronizado</span>
+      <span class="section-tag">05 · Presupuesto Sincronizado</span>
       <h2 class="section-title" id="build-section-title">Cotización del Build Recomendado</h2>
       <p class="section-desc" id="build-section-desc">
         Desglose completo de piezas para armar la torre recomendada en tiendas locales chilenas con IVA incluido y precio por transferencia.
@@ -1221,10 +1434,10 @@ footer a:hover { text-decoration: underline; }
     </div>
   </section>
 
-  <!-- Section 5: Best Practices for Coding Agents -->
+  <!-- Section 06: Best Practices for Coding Agents -->
   <section id="agentes">
     <div class="section-header">
-      <span class="section-tag">05 · Guía de Configuración</span>
+      <span class="section-tag">06 · Guía de Configuración</span>
       <h2 class="section-title">Optimización para Claude Code & Agentes</h2>
       <p class="section-desc">
         Configuración lista para usar en tu terminal (`llama-server`) adaptada a la GPU y modelo de tu dimensión seleccionada.
@@ -1822,9 +2035,13 @@ function renderPodium(dimKey) {
 
     html += `
       <div class="dim-card ${isFeatured}">
-        <div class="badge-pill ${item.rankClass}">${item.rank}</div>
-        <div class="card-kicker">${item.kicker}</div>
-        <h3 class="card-title-lg">${item.name}</h3>
+        <div class="dim-card-header">
+          <div class="card-kicker-col">
+            <span class="card-kicker">${item.kicker}</span>
+            <h3 class="card-title-lg">${item.name}</h3>
+          </div>
+          <div class="badge-pill ${item.rankClass}">${item.rank}</div>
+        </div>
         <div class="card-sub">${item.sub}</div>
 
         <div class="price-box-mini">
