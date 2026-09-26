@@ -1,0 +1,16 @@
+{
+  "name": "ai-hardware-local-2026",
+  "version": "1.0.0",
+  "description": "Interactive local AI hardware benchmark & QA suite",
+  "main": "test-ui.js",
+  "type": "module",
+  "scripts": {
+    "test": "node test-ui.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}
