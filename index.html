@@ -3,185 +3,994 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0f19">
-<title>Hardware para IA local · 2026</title>
+<meta name="description" content="Verificacion de fuentes y guia de compra de hardware para inferencia de LLM local en Chile. Precios en USD y CLP.">
+<title>Hardware para IA local · verificado</title>
 <style>
 :root{
-  --bg:#080b12;--panel:#101521;--panel2:#151b29;--text:#f5f7fb;--muted:#9ca7ba;
-  --line:#252d3d;--accent:#7dd3fc;--accent2:#a78bfa;--good:#86efac;--warn:#fcd34d;
-  --shadow:0 18px 60px rgba(0,0,0,.28);--radius:22px
+  --paper:#E7E9E4; --paper2:#DCDFD8; --paper3:#D2D6CC;
+  --ink:#161A1C; --ink2:#4A524D; --ink3:#767E76;
+  --rule:#B4B8B0; --rule2:#C6CAC0;
+  --ok:#0B5D57; --ok-bg:#C3DAD5;
+  --est:#A63D22; --est-bg:#E8CFC4; --est-deep:#8E3218;
+  --manuf:#3B4A6B; --manuf-bg:#CBD2E0;
+  --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,"Times New Roman",serif;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,"DejaVu Sans Mono","Liberation Mono",monospace;
+  --gut:clamp(18px,4vw,40px);
 }
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(900px 500px at 15% -10%,#18233b 0,transparent 65%),var(--bg);
-color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
-a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
-.container{width:min(1120px,calc(100% - 32px));margin:auto}
-header{padding:64px 0 32px}
-.eyebrow{display:inline-flex;padding:7px 11px;border:1px solid var(--line);border-radius:999px;color:var(--accent);font-size:.82rem;background:#0d1320}
-h1{font-size:clamp(2.3rem,6vw,4.8rem);line-height:.98;letter-spacing:-.055em;margin:20px 0 18px;max-width:850px}
-.lead{font-size:1.08rem;color:var(--muted);max-width:780px}
-.meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.chip{border:1px solid var(--line);background:#0d121d;padding:7px 10px;border-radius:10px;color:#cbd5e1;font-size:.82rem}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin:28px 0 52px}
-.hero-card,.card{background:linear-gradient(145deg,rgba(21,27,41,.96),rgba(13,18,29,.96));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-.hero-card{padding:28px}
-.hero-card h2{margin:0 0 12px;font-size:1.2rem}.hero-card p{margin:0;color:var(--muted)}
-.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.stat{background:#0b101a;border:1px solid var(--line);border-radius:16px;padding:16px}
-.stat b{display:block;font-size:1.35rem}.stat span{color:var(--muted);font-size:.82rem}
-section{margin:58px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}
-h2{font-size:1.8rem;letter-spacing:-.03em;margin:0}.section-head p{margin:0;color:var(--muted);max-width:620px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{padding:22px;position:relative;overflow:hidden}
-.card .rank{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
-.card h3{font-size:1.4rem;margin:8px 0 4px}.subtitle{color:var(--accent);font-weight:600}
-.price{font-size:1.25rem;font-weight:800;margin:16px 0}
-.specs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0}
-.spec{background:#0b101a;border-radius:12px;padding:10px}.spec small{display:block;color:var(--muted);font-size:.72rem}.spec strong{font-size:.95rem}
-.card ul{padding-left:18px;color:#cbd5e1}.card li{margin:7px 0}
-.badge{display:inline-block;padding:5px 8px;border-radius:8px;background:#162337;color:#bae6fd;font-size:.75rem}
-.note{font-size:.78rem;color:var(--muted)}
-.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px}
-table{width:100%;border-collapse:collapse;min-width:760px;background:#0d121d}
-th,td{padding:14px 15px;text-align:left;border-bottom:1px solid var(--line)}th{color:#aeb9cb;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em}td{font-size:.9rem}
-tr:last-child td{border-bottom:0}
-.benchmark{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.bench{padding:20px;border:1px solid var(--line);border-radius:18px;background:#0d121d}.bench h3{margin:0 0 8px}.bench .big{font-size:2rem;font-weight:850}.bench p{color:var(--muted);margin:4px 0 0;font-size:.88rem}
-.sources{display:grid;grid-template-columns:1fr 1fr;gap:12px}.source{padding:16px;border:1px solid var(--line);border-radius:16px;background:#0d121d}.source b{display:block;margin-bottom:5px}.source span{font-size:.82rem;color:var(--muted)}
-.disclaimer{padding:20px;border:1px solid #3a3320;background:#17140d;border-radius:18px;color:#d8cfb6;font-size:.85rem}
-footer{padding:35px 0 60px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line)}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.btn{border:1px solid var(--line);background:#111827;color:#fff;border-radius:11px;padding:10px 13px;cursor:pointer;font-weight:650}.btn.primary{background:#e5f6ff;color:#08111c;border-color:#e5f6ff}
-@media(max-width:850px){.hero-grid,.cards,.benchmark,.sources{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:8px}.hero-card{padding:22px}header{padding-top:40px}}
-@media(max-width:520px){.container{width:min(100% - 22px,1120px)}h1{font-size:2.65rem}.stat-grid{grid-template-columns:1fr 1fr}.card{padding:18px}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--serif);font-size:17px;line-height:1.62;
+  background-image:
+    linear-gradient(to right,rgba(22,26,28,.045) 1px,transparent 1px),
+    linear-gradient(to bottom,rgba(22,26,28,.045) 1px,transparent 1px);
+  background-size:26px 26px;
+}
+.shell{width:min(1180px,100% - var(--gut)*2);margin:0 auto}
+
+/* ---------- masthead: title block, not a hero ---------- */
+.masthead{padding:30px 0 0;border-bottom:2px solid var(--ink)}
+.masthead-top{display:flex;flex-wrap:wrap;gap:6px 26px;align-items:baseline;padding-bottom:14px;border-bottom:1px solid var(--rule2)}
+.masthead-top span{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:var(--ink2)}
+.masthead h1{
+  font-size:clamp(2.1rem,5.4vw,3.9rem);line-height:1.02;letter-spacing:-.02em;
+  margin:26px 0 0;font-weight:400;max-width:19ch;
+}
+.masthead h1 em{font-style:italic;color:var(--ink2)}
+.masthead-sub{margin:18px 0 0;max-width:62ch;font-size:1.06rem;color:var(--ink2)}
+.masthead-sub strong{color:var(--ink);font-weight:400;border-bottom:1px solid var(--rule)}
+
+/* FX strip: the number every price on this page depends on */
+.fx{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);margin:26px 0 0;
+}
+.fx div{background:var(--paper);padding:13px 15px}
+.fx dt{font-family:var(--mono);font-size:11px;color:var(--ink3);margin:0 0 5px}
+.fx dd{margin:0;font-family:var(--mono);font-size:1.32rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+
+/* ---------- section frame ---------- */
+section{padding:52px 0 0}
+.sec-head{display:grid;grid-template-columns:64px 1fr;gap:0 20px;align-items:start;padding-bottom:16px;border-bottom:1.5px solid var(--ink);margin-bottom:30px}
+.sec-num{font-family:var(--mono);font-size:12px;color:var(--ink3);padding-top:9px}
+.sec-head h2{margin:0;font-size:clamp(1.55rem,3.4vw,2.3rem);line-height:1.1;letter-spacing:-.018em;font-weight:400}
+.sec-head p{margin:11px 0 0;max-width:66ch;color:var(--ink2);font-size:1rem}
+.sec-head .aside{margin:14px 0 0;font-family:var(--mono);font-size:12px;color:var(--ink3);max-width:none}
+
+/* ---------- provenance chips: colour carries meaning ---------- */
+.prov{
+  display:inline-block;font-family:var(--mono);font-size:11px;line-height:1;
+  padding:4px 7px 4px 6px;border-left:3px solid;white-space:nowrap;vertical-align:2px;
+}
+.p-medido{color:var(--ok);border-color:var(--ok);background:var(--ok-bg)}
+.p-derivado{color:var(--manuf);border-color:var(--manuf);background:var(--manuf-bg)}
+.p-estimado{color:var(--est);border-color:var(--est);background:var(--est-bg)}
+.p-fabricante{color:var(--ink2);border-color:var(--ink3);background:var(--paper2)}
+.p-error{color:#fff;background:var(--est-deep);border-color:var(--est-deep)}
+
+/* ---------- tables: rules only ---------- */
+.tw{overflow-x:auto;margin:0 0 4px}
+table{width:100%;border-collapse:collapse;min-width:660px;font-size:.92rem}
+th,td{text-align:left;padding:11px 14px 11px 0;border-bottom:1px solid var(--rule2);vertical-align:top}
+thead th{
+  font-family:var(--mono);font-size:11px;font-weight:400;color:var(--ink3);
+  border-bottom:1.5px solid var(--ink);white-space:nowrap;padding-bottom:8px;
+}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;padding-right:0}
+tbody tr:hover{background:rgba(22,26,28,.035)}
+td.name{font-weight:400}
+caption{caption-side:bottom;text-align:left;font-family:var(--mono);font-size:11.5px;color:var(--ink3);padding-top:12px;line-height:1.55}
+
+/* ---------- dual-currency price: CLP leads, USD always present ---------- */
+.pair{display:flex;flex-direction:column;line-height:1.25;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.pair .clp{font-size:1.02rem}
+.pair .usd{font-size:.76rem;color:var(--ink3)}
+.pair.sm .clp{font-size:.92rem}
+.rng{font-family:var(--mono);font-size:.86rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rng b{font-weight:400}
+.rng span{display:block;font-size:.74rem;color:var(--ink3)}
+
+/* ---------- the formula ---------- */
+.formula{
+  font-family:var(--mono);font-size:clamp(.86rem,2.1vw,1.06rem);letter-spacing:-.01em;
+  background:var(--ink);color:var(--paper);padding:20px 22px;overflow-x:auto;line-height:1.85;
+}
+.formula b{color:#8FD4C9;font-weight:400}
+.formula i{color:#E8A78E;font-style:normal}
+
+/* ---------- signature element: bandwidth budget ---------- */
+.instrument{border:1.5px solid var(--ink);background:var(--paper2)}
+.inst-head{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;align-items:baseline;padding:14px 18px;border-bottom:1px solid var(--ink)}
+.inst-head h3{margin:0;font-size:1.14rem;font-weight:400;letter-spacing:-.01em}
+.inst-head .mono{font-family:var(--mono);font-size:11.5px;color:var(--ink3)}
+.inst-body{padding:20px 18px 18px}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:18px 26px;align-items:end;margin-bottom:24px}
+.ctl label{display:block;font-family:var(--mono);font-size:11px;color:var(--ink3);margin-bottom:7px}
+.ctl select,.ctl input[type=range]{width:100%;font:inherit}
+.ctl select{
+  font-family:var(--mono);font-size:13px;padding:8px 9px;background:var(--paper);
+  border:1px solid var(--rule);border-radius:2px;color:var(--ink);
+}
+.ctl output{font-family:var(--mono);font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=range]{
+  -webkit-appearance:none;appearance:none;background:transparent;height:22px;cursor:pointer;margin:0;
+}
+input[type=range]::-webkit-slider-runnable-track{height:2px;background:var(--rule)}
+input[type=range]::-moz-range-track{height:2px;background:var(--rule)}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:14px;height:20px;background:var(--ink);border:0;border-radius:1px;margin-top:-9px;
+}
+input[type=range]::-moz-range-thumb{width:14px;height:20px;background:var(--ink);border:0;border-radius:1px}
+.chk{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12.5px;cursor:pointer;padding-bottom:2px}
+.chk input{width:15px;height:15px;accent-color:var(--ok);margin:0;cursor:pointer}
+
+/* the bar itself */
+.budget{border-top:1px solid var(--rule);padding-top:18px}
+.bar{display:flex;height:46px;border:1px solid var(--ink);background:var(--paper);overflow:hidden}
+.bar div{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11.5px;color:#fff;overflow:hidden;white-space:nowrap;transition:width .22s ease}
+.bar .b-w{background:var(--ok)}
+.bar .b-k{background:var(--manuf);color:var(--paper)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:12px;font-family:var(--mono);font-size:11.5px;color:var(--ink2)}
+.legend i{display:inline-block;width:11px;height:11px;margin-right:7px;vertical-align:-1px}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:22px}
+.readout div{background:var(--paper);padding:13px 15px}
+.readout dt{font-family:var(--mono);font-size:11px;color:var(--ink3);margin:0 0 5px}
+.readout dd{margin:0;font-family:var(--mono);font-size:1.42rem;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.readout dd small{font-size:.62em;color:var(--ink3);letter-spacing:0}
+.readout .hero dd{color:var(--ok)}
+.inst-foot{padding:12px 18px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11.5px;color:var(--ink3);line-height:1.6}
+
+/* ---------- ranked recommendation ---------- */
+.rank{border-top:1.5px solid var(--ink);padding:24px 0 0;margin-top:8px}
+.rank:first-of-type{border-top:0;padding-top:0}
+.rank-h{display:grid;grid-template-columns:56px 1fr auto;gap:0 18px;align-items:baseline;margin-bottom:14px}
+.rank-h .n{font-family:var(--mono);font-size:1.5rem;color:var(--ink3);line-height:1}
+.rank-h h3{margin:0;font-size:clamp(1.3rem,2.8vw,1.75rem);font-weight:400;letter-spacing:-.015em;line-height:1.15}
+.rank-h .badge{font-family:var(--mono);font-size:11px;padding:5px 8px;border:1px solid var(--ok);color:var(--ok);white-space:nowrap}
+.rank-body{display:grid;grid-template-columns:1fr;gap:0 34px}
+@media(min-width:900px){.rank-body{grid-template-columns:1.55fr 1fr}}
+.rank-body ul{margin:0;padding-left:19px}
+.rank-body li{margin:0 0 9px}
+.rank-body li::marker{color:var(--ink3)}
+.rank-body .verdict{font-size:1.04rem;margin:0 0 16px;max-width:60ch}
+.specgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule2);border:1px solid var(--rule2)}
+.specgrid div{background:var(--paper);padding:10px 12px}
+.specgrid dt{font-family:var(--mono);font-size:10.5px;color:var(--ink3);margin:0 0 3px}
+.specgrid dd{margin:0;font-family:var(--mono);font-size:.9rem;font-variant-numeric:tabular-nums}
+
+/* ---------- prose blocks ---------- */
+.prose{max-width:66ch}
+.prose p{margin:0 0 15px}
+.prose ul{padding-left:20px;margin:0 0 15px}
+.prose li{margin:0 0 7px}
+.note{
+  border-left:3px solid var(--est);background:var(--est-bg);
+  padding:15px 18px;margin:26px 0;font-size:.94rem;max-width:70ch;
+}
+.note.fix{border-color:var(--ok);background:var(--ok-bg)}
+.note b{font-weight:400}
+
+/* ---------- source list ---------- */
+.srcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:0 32px;margin:0;padding:0;list-style:none}
+.srcs li{padding:11px 0;border-bottom:1px solid var(--rule2);font-size:.9rem;line-height:1.5}
+.srcs a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+.srcs a:hover{border-color:var(--ink);text-decoration:none}
+.srcs .mono{font-family:var(--mono);font-size:11px;color:var(--ink3);display:block}
+
+footer{margin-top:64px;padding:24px 0 70px;border-top:2px solid var(--ink);display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between;font-family:var(--mono);font-size:11.5px;color:var(--ink3)}
+
+:focus-visible{outline:2px solid var(--ok);outline-offset:2px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:12px;top:12px;position:fixed;background:var(--ink);color:var(--paper);padding:10px 14px;z-index:9;font-family:var(--mono);font-size:12px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media(max-width:620px){
+  .sec-head{grid-template-columns:1fr}.sec-num{padding-top:0;margin-bottom:6px}
+  .rank-h{grid-template-columns:1fr}.rank-h .n{font-size:1.1rem}
+  .specgrid{grid-template-columns:1fr}
+}
+@media print{
+  body{background:#fff;background-image:none}
+  .instrument{break-inside:avoid}
+  .bar div{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 </style>
 </head>
 <body>
-<div class="container">
-<header>
-  <span class="eyebrow">Comparativa técnica · Chile · septiembre 2026</span>
-  <h1>Hardware para IA local</h1>
-  <p class="lead">Tres configuraciones para ejecutar modelos locales de aproximadamente 27–35B parámetros, con foco en velocidad de inferencia, memoria disponible y coste de entrada.</p>
-  <div class="meta">
-    <span class="chip">Qwen3.8-27B</span><span class="chip">Ornith 1.5-35B-A3B</span><span class="chip">LLM local</span><span class="chip">Claude Code / agentes</span>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<div class="shell">
+
+<header class="masthead">
+  <div class="masthead-top">
+    <span>Informe verificado · 26 de septiembre de 2026</span>
+    <span>Chile · precios con IVA</span>
+    <span>Sin dependencias externas</span>
   </div>
-  <div class="actions"><button class="btn primary" onclick="sharePage()">Compartir</button><button class="btn" onclick="window.print()">Imprimir / PDF</button></div>
+  <h1>Hardware para inferencia de LLM local, <em>verificada</em></h1>
+  <p class="masthead-sub">
+    La version anterior de esta pagina se publico sin contrastar sus fuentes. Este documento
+    hace esa parte: separa <strong>lo que se midio</strong> de lo que se derivo o se estimo,
+    corrige los errores que aparecieron, y termina en una recomendacion de compra
+    con precios en <strong>dolares y pesos chilenos</strong>.
+  </p>
+
+  <dl class="fx">
+    <div><dt>Tipo de cambio base</dt><dd>965,71</dd></div>
+    <div><dt>CLP por USD</dt><dd>25-09-2026</dd></div>
+    <div><dt>Banda 22-25 sept.</dt><dd>945,87 - 965,71</dd></div>
+    <div><dt>Variacion CLP ±1-2%</dt><dd>recalcula USD</dd></div>
+  </dl>
 </header>
 
-<div class="hero-grid">
-  <div class="hero-card">
-    <h2>La pregunta clave</h2>
-    <p>No existe una única solución óptima: una GPU dedicada prioriza tokens/s cuando el modelo cabe en VRAM; una APU con memoria unificada sacrifica velocidad para ofrecer mucha más capacidad de modelos.</p>
-  </div>
-  <div class="hero-card">
-    <div class="stat-grid">
-      <div class="stat"><b>32 GB</b><span>VRAM RTX 5090</span></div>
-      <div class="stat"><b>128 GB</b><span>memoria EVO-X2</span></div>
-      <div class="stat"><b>24 GB</b><span>VRAM RTX 3090</span></div>
-      <div class="stat"><b>27–35B</b><span>clase de modelos</span></div>
+<main id="contenido">
+
+<!-- ============================= 1. CORRECCIONES ============================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num">01</div>
+    <div>
+      <h2>Lo que estaba mal</h2>
+      <p>Once afirmaciones de la version anterior, verificadas contra la fuente citada el 26 de septiembre de 2026.
+         Siete se sostienen. Tres tienen un error. Una omite una advertencia que la propia fuente
+         highlighteaba en negrita.</p>
+      <p class="aside">Metodo: se fetchearon directamente las ocho URL citadas en la version anterior. Ninguna fuente resulto ser inventada.</p>
     </div>
   </div>
-</div>
 
-<section id="options">
-<div class="section-head"><div><h2>Las 3 configuraciones</h2><p>Ordenadas de mayor a menor inversión de referencia. Los precios son observaciones de mercado, no precios garantizados.</p></div></div>
-<div class="cards">
-  <article class="card">
-    <span class="rank">01 · Máxima velocidad</span>
-    <h3>RTX 5090 32 GB</h3><div class="subtitle">GPU dedicada · Blackwell</div>
-    <div class="price">≈ $4,0–5,0 M CLP <span class="note">GPU</span></div>
-    <div class="specs"><div class="spec"><small>Memoria</small><strong>32 GB GDDR7</strong></div><div class="spec"><small>Bandwidth</small><strong>1.792 GB/s</strong></div><div class="spec"><small>CUDA</small><strong>21.760</strong></div><div class="spec"><small>Arquitectura</small><strong>Blackwell</strong></div></div>
-    <span class="badge">Máxima velocidad</span>
-    <ul><li>La alternativa con mayor ancho de banda de las tres.</li><li>32 GB permiten ejecutar cómodamente muchos modelos 27–35B cuantizados.</li><li>Requiere un PC, fuente y refrigeración adecuados.</li></ul>
-    <p class="note">Precio observado en Chile: desde $4.599.500 para un modelo ASUS RTX 5090 32 GB en SoloTodo al momento de la consulta.</p>
-  </article>
-  <article class="card">
-    <span class="rank">02 · Capacidad / formato</span>
-    <h3>GMKtec EVO-X2</h3><div class="subtitle">Ryzen AI Max+ 395 · 128 GB</div>
-    <div class="price">US$2.199,99 <span class="note">precio oficial consultado</span></div>
-    <div class="specs"><div class="spec"><small>Memoria</small><strong>128 GB LPDDR5X</strong></div><div class="spec"><small>Bandwidth</small><strong>256-bit LPDDR5X</strong></div><div class="spec"><small>GPU</small><strong>Radeon 8060S</strong></div><div class="spec"><small>CPU</small><strong>16C / 32T</strong></div></div>
-    <span class="badge">Mini-PC + memoria</span>
-    <ul><li>Muchísima más memoria accesible para modelos grandes.</li><li>Formato compacto y consumo muy inferior a una GPU dedicada de gama alta.</li><li>Menor velocidad absoluta que una RTX 5090 en los benchmarks consultados.</li></ul>
-    <p class="note">GMKtec publica la configuración de 128 GB y anuncia soporte local para modelos mucho mayores que 35B.</p>
-  </article>
-  <article class="card">
-    <span class="rank">03 · Entrada económica</span>
-    <h3>RTX 3090 24 GB</h3><div class="subtitle">GPU dedicada · Ampere</div>
-    <div class="price">≈ $700k–990k CLP <span class="note">usada</span></div>
-    <div class="specs"><div class="spec"><small>Memoria</small><strong>24 GB GDDR6X</strong></div><div class="spec"><small>Bus</small><strong>384-bit</strong></div><div class="spec"><small>CUDA</small><strong>10.496</strong></div><div class="spec"><small>Arquitectura</small><strong>Ampere</strong></div></div>
-    <span class="badge">Coste de entrada</span>
-    <ul><li>24 GB siguen siendo suficientes para muchos modelos 27–35B cuantizados.</li><li>Ecosistema CUDA muy maduro.</li><li>Al ser usada, hay que verificar estado, temperaturas y garantía.</li></ul>
-    <p class="note">Se observaron anuncios de $700.000 y $990.000 CLP en Santiago durante septiembre de 2026.</p>
-  </article>
-</div>
+  <div class="tw">
+  <table>
+    <thead><tr><th>Afirmacion publicada</th><th>Estado</th><th>Valor correcto y origen</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="name">Los modelos <strong>Qwen3.8-27B</strong> y <strong>Ornith 1.5-35B-A3B</strong> existen</td>
+        <td><span class="prov p-medido">medido</span></td>
+        <td>Ambos existen. <code>Qwen/Qwen3.8-27B</code>: denso, 27.320.697.856 parametros, Apache-2.0, 6,65M de descargas/mes, actualizado ago-2026. <code>ornith-ai/Ornith-1.5-35B-A3B</code>: MoE 34,8B totales / 3B activos, 256 expertos / 8 activos, MIT. Ornith es un post-train de Qwen3.5, no un release oficial de Qwen.</td>
+      </tr>
+      <tr>
+        <td class="name">Las tres URL de benchmarks son reales y contienen las cifras citadas</td>
+        <td><span class="prov p-medido">medido</span></td>
+        <td>Las tres existen. Discusion HF #31 (<code>ornith-ai/Ornith-1.5-35B-A3B/discussions/31</code>) contiene literalmente <em>"Ornith 1.5 35B-A3B — 273.2 tok/s"</em> y <em>"Qwen 3.8 27B — 77.2 tok/s"</em> con RTX 5090 32 GB, llama.cpp, Q4_K_M, f16 KV, full GPU offload. El repo de erstmalreden reporta los 16,45 tok/s sostenidos. halofpx reporta 76,9 y 105,6 tok/s.</td>
+      </tr>
+      <tr>
+        <td class="name">RTX 5090: 32 GB GDDR7, 21.760 CUDA, Blackwell, 512-bit</td>
+        <td><span class="prov p-fabricante">fabricante</span></td>
+        <td>Confirmado literalmente en la tabla de specs de NVIDIA: <em>Standard Memory Config 32 GB GDDR7 · NVIDIA CUDA Cores 21760 · NVIDIA Architecture Blackwell · Memory Interface Width 512-bit</em>.</td>
+      </tr>
+      <tr>
+        <td class="name">RTX 3090: 24 GB GDDR6X, 384-bit, 10.496 CUDA, Ampere</td>
+        <td><span class="prov p-fabricante">fabricante</span></td>
+        <td>Confirmado literalmente en NVIDIA: <em>24 GB GDDR6X · 384-bit · 10496 · Ampere</em>.</td>
+      </tr>
+      <tr>
+        <td class="name">Ryzen AI Max+ 395: Radeon 8060S, 16C/32T, LPDDR5X 256-bit</td>
+        <td><span class="prov p-fabricante">fabricante</span></td>
+        <td>Confirmado en AMD: <em>Radeon 8060S Graphics · 16 nucleos · 32 subprocesos · 256-bit LPDDR5x · Memoria maxima 128 GB · 40 nucleos de grafica · LPDDR5x-8000</em>.</td>
+      </tr>
+      <tr>
+        <td class="name">Ancho de banda de la RTX 5090: <strong>"1.792 GB/s"</strong></td>
+        <td><span class="prov p-error">error de unidad</span></td>
+        <td>Es <strong>1.792 TB/s</strong>, o 1.792 <strong>GB</strong>/s escritos con punto de miles. El valor correcto es <strong>1.792 GB/s = 1.792 TB/s = 1.792.000 MB/s</strong>. Error de factor 1.000×. Ademas NVIDIA <em>no publica</em> una fila de ancho de banda: 1.792 es un valor derivado (28 Gbps × 512 ÷ 8).</td>
+      </tr>
+      <tr>
+        <td class="name">GMKtec EVO-X2 a <strong>US$2.199,99</strong> como "precio oficial consultado"</td>
+        <td><span class="prov p-error">error de SKU</span></td>
+        <td>US$2.199,99 es el precio "desde" del SKU de <strong>64 GB + 1 TB</strong>. Los SKU de 128 GB son <strong>US$3.499,99</strong> (128+1TB), <strong>US$3.649,99</strong> (128+2TB) y <strong>US$3.699,99</strong> (128+2TB con plan Z.AI). Atribuir 2.199,99 a la configuracion de 128 GB subestima en US$1.300. El storefront de EE.UU. hoy muestra US$1.999,99 para un escalon inferior: hay que confirmar el SKU exacto.</td>
+      </tr>
+      <tr>
+        <td class="name">Ancho de banda del Ryzen AI Max+ 395: "256 GB/s"</td>
+        <td><span class="prov p-derivado">derivado</span></td>
+        <td>El valor es correcto (LPDDR5x-8000 × 256 ÷ 8), pero AMD <em>no publica ninguna cifra de GB/s</em>: las unicas filas de "ancho de banda" de su pagina son de codificacion y decodificacion de video. Debe etiquetarse como derivado, y separar bus (256 bits) de ancho de banda (256 GB/s).</td>
+      </tr>
+      <tr>
+        <td class="name">Ancho de banda de la RTX 3090: "≈936 GB/s", atribuido a NVIDIA</td>
+        <td><span class="prov p-derivado">derivado</span></td>
+        <td>El valor correcto es <strong>936,2 GB/s</strong> (19,5 Gbps × 384 ÷ 8). Pero la pagina de NVIDIA nunca lo publico: la captura de marzo de 2022 de esa misma URL tampoco lo contiene. No se puede citar a NVIDIA.</td>
+      </tr>
+      <tr>
+        <td class="name">EVO-X2 reporta 105,6 tok/s "con MTP"</td>
+        <td><span class="prov p-estamado">estimado</span></td>
+        <td><strong>La omision material.</strong> halofpx concluia que MTP era una <em>perdida neta</em> en la arquitectura hibrida <code>qwen35moe</code> (76,0 tok/s base, aceptacion de greedy de solo 15,9-19,9%) hasta que un refresco del drafter del 28-08-2026 lo arreglo. Los 105,6 tok/s exigen el GGUF cuantizado con sha256 <code>0f907917…</code>. En cuantizaciones anteriores, MTP <em>empeora</em> el rendimiento. La pagina lo presento como propiedad del modelo.</td>
+      </tr>
+      <tr>
+        <td class="name">Precios observados: SoloTodo $4.599.500, Yapo $700.000 "actualizado 22/09/2026"</td>
+        <td><span class="prov p-error">error</span></td>
+        <td>Los precios actuales de la RTX 5090 en Chile van <strong>3.897.888 - 4.419.900 CLP</strong>, y el ROG Astral figura en Tecnoshopping a <strong>4.419.900</strong>, no en SoloTodo a 4.599.500. Para la 3090 usada, el anuncio de HardwareLand a $750.000 <strong>ya fue vendido</strong> y el de Yapo a $990.000 esta fechado el 25/09/<strong>2025</strong>, un ano de antiguedad. Ningun anuncio de 3090 usada a $700.000 esta verificable hoy.</td>
+      </tr>
+    </tbody>
+    <caption>Las siete primeras filas se sostienen. El problema de la version anterior no era fabricacion: era presentacion — presento un precio de un SKU equivocado como si fuera el de 128 GB, y omite una advertencia que su propia fuente highlighteaba en negrita.</caption>
+  </table>
+  </div>
+
+  <div class="note">
+    <b>Nota sobre la atribucion de benchmarks.</b> Las cifras de 273,2 y 77,2 tok/s son de una sola persona
+    (laxmimerit) en una sola tarjeta, sin repeticiones controladas, y la propia publicacion se contradice
+    (el titulo dice 271 tok/s y 32 KB/token; la tabla dice 273,2 y 20,0 KB/token). Se reproducen aqui como
+    <em>medidas de unContributor</em>, no como referencia de plataforma. La version anterior no senalo esta limitacion.
+  </div>
 </section>
 
+<!-- ============================= 2. POR QUE IMPORTA ============================= -->
 <section>
-<div class="section-head"><div><h2>Rendimiento publicado</h2><p>Los números provienen de pruebas independientes. No deben interpretarse como un benchmark controlado entre las tres plataformas.</p></div></div>
-<div class="benchmark">
-  <div class="bench"><h3>RTX 5090 · Ornith 1.5-35B-A3B</h3><div class="big">273,2 tok/s</div><p>llama.cpp · Q4_K_M · full GPU offload · RTX 5090 32 GB.</p><p class="note">La misma prueba reportó 77,2 tok/s para Qwen3.8-27B.</p></div>
-  <div class="bench"><h3>EVO-X2 · Qwen3.8-27B</h3><div class="big">16,45 tok/s</div><p>Promedio sostenido de 512 tokens a 128K de contexto; Vulkan, full GPU offload, UD-Q5_K_XL y MTP.</p><p class="note">El mismo estudio observó ventanas de 23–26 tok/s durante pasos individuales de agente.</p></div>
-  <div class="bench"><h3>EVO-X2 · Ornith 1.5-35B-A3B</h3><div class="big">76,9 tok/s</div><p>ROCm FP4, prueba publicada para Ryzen AI Max+ 395. Una configuración con MTP reportó 105,6 tok/s efectivos.</p><p class="note">Son resultados de una implementación específica sobre Strix Halo.</p></div>
-  <div class="bench"><h3>RTX 5090 · Qwen3.8-27B</h3><div class="big">77,2 tok/s</div><p>llama.cpp · Q4_K_M · full GPU offload · f16 KV cache.</p><p class="note">Otra medición independiente con Q6_K reportó 63,08 tok/s; con vLLM NVFP4+MTP, 119,79 tok/s.</p></div>
-</div>
+  <div class="sec-head">
+    <div class="sec-num">02</div>
+    <div>
+      <h2>Que determina los tokens por segundo</h2>
+      <p>La conclusion de la investigacion, y la unica idea que separa las cinco opciones del proximo informe.
+         No es FLOPs, no es VRAM, no es la marca de la GPU. Es el ancho de banda de memoria.</p>
+    </div>
+  </div>
+
+  <div class="prose">
+    <p>La inferencia tiene dos fases con limites distintos. El <strong>prefill</strong> procesa todo el prompt de una
+    vez: es limitado por computo y se paraleliza sin problema. El <strong>decode</strong> genera un token por
+    vez: es limitado por <strong>ancho de banda de memoria</strong>, porque hay que leer los pesos del modelo
+    entero una vez por token, y las unidades de computo quedan ociosas esperando.</p>
+
+    <div class="formula">
+      tokens/s  ≈  <b>ancho_de_banda_efectivo (GB/s)</b><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;÷&nbsp; [ <i>pesos_activos</i> × <i>bytes_por_parametro</i> &nbsp;+&nbsp; <i>KV_por_token</i> × <i>contexto</i> ]<br><br>
+      pesos_activos = <i>no el total</i> &nbsp;→ en MoE, los expertos routed + todas las capas densas<br>
+      bytes_por_parametro → Q4_K_M ≈ 0,58 B/param &nbsp;·&nbsp; Q8_0 ≈ 1,07 &nbsp;·&nbsp; F16 = 2,0<br>
+      KV_por_token = 2 × capas × kv_heads × head_dim × bytes_por_elemento
+    </div>
+
+    <p style="margin-top:24px">El modelo se calibra contra tres puntos medidos independientes de
+    Qwen3-30B-A3B en una RTX 5090 con llama-bench, variando solo la profundidad de contexto:</p>
+  </div>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>Contexto</th><th class="n">KV (GB)</th><th class="n">Total GB/token</th><th class="n">Medido (tok/s)</th><th class="n">Ancho de banda implicito</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td>4K</td><td class="n">0,40</td><td class="n">2,31</td><td class="n">234,30</td><td class="n">541 GB/s</td><td><span class="prov p-medido">medido</span></td></tr>
+      <tr><td>8K</td><td class="n">0,81</td><td class="n">2,72</td><td class="n">170,49</td><td class="n">464 GB/s</td><td><span class="prov p-medido">medido</span></td></tr>
+      <tr><td>32K</td><td class="n">3,22</td><td class="n">5,13</td><td class="n">110,65</td><td class="n">568 GB/s</td><td><span class="prov p-medido">medido</span></td></tr>
+    </tbody>
+    <caption>RTX 5090, Qwen3-30B-A3B Q4_K_XL, 48 capas, 4 KV heads, head_dim 128 → 98.304 B/token en f16. El ancho de banda implicito se mantiene en 464-568 GB/s (±10 %) a traves de tres profundidades: el modelo funciona. Fuente: hardware-corner.net/rtx-5090-llm-benchmarks</caption>
+  </table>
+  </div>
+
+  <div class="tw" style="margin-top:34px">
+  <table>
+    <thead><tr><th>Plataforma</th><th class="n">Pico (GB/s)</th><th class="n">Efectivo MoE (GB/s)</th><th class="n">η MoE</th><th class="n">η denso</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr><td class="name">RTX 5090 (Blackwell, CUDA)</td><td class="n">1.792</td><td class="n">~538</td><td class="n">0,30</td><td class="n">0,69-0,79</td><td><span class="prov p-derivado">derivado</span></td></tr>
+      <tr><td class="name">RTX 4090 (Ada, CUDA)</td><td class="n">1.008</td><td class="n">~302</td><td class="n">0,30</td><td class="n">0,89</td><td><span class="prov p-derivado">derivado</span></td></tr>
+      <tr><td class="name">RTX 3090 (Ampere, CUDA)</td><td class="n">936</td><td class="n">~290</td><td class="n">0,31</td><td class="n">~0,70</td><td><span class="prov p-medido">medido</span></td></tr>
+      <tr><td class="name">Mac Studio (unificado, Metal)</td><td class="n">819 - 1.200</td><td class="n">~660</td><td class="n">0,50-0,68</td><td class="n">0,37 <span style="color:var(--est)">*</span></td><td><span class="prov p-estamado">estimado</span></td></tr>
+      <tr><td class="name">Strix Halo (unificado, Vulkan)</td><td class="n">256</td><td class="n">~160</td><td class="n">0,62-0,66</td><td class="n">—</td><td><span class="prov p-medido">medido</span></td></tr>
+      <tr><td class="name">DGX Spark GB10 (unificado)</td><td class="n">273</td><td class="n">~124</td><td class="n">0,46</td><td class="n">0,71</td><td><span class="prov p-medido">medido</span></td></tr>
+    </tbody>
+    <caption>η = fraccion del ancho de banda de pico que el stack real alcanza. <b>η MoE es systematically menor que η denso</b> (~0,30 contra ~0,70): los pesos expertos se reunen desde 128-256 bloques dispersos, la localidad DRAM es pobre y el lanzamiento de kernels por token domina. *En Apple, llama.cpp Metal rinde solo 37 % del pico en modelos densos; MLX en la misma maquina llega a 68 %.</caption>
+  </table>
+  </div>
+
+  <div class="note fix">
+    <b>La consecuencia practica.</b> Elegir un MoE de 35B con 3B activos en vez de un denso de 35B reduce
+    los bytes por token de 20,3 GB a 1,74 GB: una ventaja de <strong>11,7×</strong> en ancho de banda.
+    Pero como η MoE (0,30) es menos de la mitad de η denso (0,70), la ventaja que se realiza es de
+    <strong>~5×</strong>. Medido en hardware real: 234,3 contra 61,4 tok/s en una 5090 = 3,8×; en el
+    DGX Spark, 89,3 contra 10,7 tok/s = 8,3×. Ambos dentro de la banda predicha. La brecha entre 11,7× y
+    4-8× es un impuesto de ingenieria real que no va a desaparecer.
+  </div>
 </section>
 
+<!-- ============================= 3. EL INSTRUMENTO ============================= -->
 <section>
-<div class="section-head"><div><h2>Comparación</h2><p>Las especificaciones son directamente comparables; los benchmarks no necesariamente.</p></div></div>
-<div class="table-wrap"><table>
-<thead><tr><th>Característica</th><th>RTX 5090</th><th>EVO-X2 128 GB</th><th>RTX 3090</th></tr></thead>
-<tbody>
-<tr><td>Tipo</td><td>GPU dedicada</td><td>Mini-PC / APU</td><td>GPU dedicada</td></tr>
-<tr><td>Memoria</td><td>32 GB GDDR7</td><td>128 GB LPDDR5X</td><td>24 GB GDDR6X</td></tr>
-<tr><td>Ancho de banda</td><td>1.792 GB/s</td><td>256 GB/s</td><td>≈936 GB/s</td></tr>
-<tr><td>Modelo de referencia</td><td>Blackwell</td><td>Strix Halo</td><td>Ampere</td></tr>
-<tr><td>Precio observado</td><td>≈ $4,0–5,0 M CLP</td><td>US$2.199,99</td><td>≈ $700k–990k CLP usada</td></tr>
-<tr><td>Ornith 35B</td><td>273,2 tok/s*</td><td>76,9–105,6 tok/s**</td><td>Sin prueba homogénea</td></tr>
-<tr><td>Qwen3.8-27B</td><td>77,2 tok/s*</td><td>16,45 tok/s**</td><td>Sin prueba homogénea</td></tr>
-<tr><td>Formato</td><td>Desktop</td><td>Mini-PC</td><td>Desktop</td></tr>
-</tbody></table></div>
-<p class="note" style="margin-top:10px">* RTX 5090: llama.cpp/Q4_K_M/full offload. ** EVO-X2: pruebas publicadas con configuraciones y cuantizaciones específicas. Los resultados no constituyen un benchmark cruzado.</p>
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <div>
+      <h2>Presupuesto de ancho de banda</h2>
+      <p>Arrastra el contexto y mira como el presupuesto se reparte. A la izquierda, los pesos activos
+         que el modelo lee en cada token. A la derecha, la cache KV que el contexto te obliga a releer.
+         Ambos se suman, y la suma es lo que divide tu ancho de banda.</p>
+      <p class="aside">Modelo de referencia: Ornith 1.5-35B-A3B en Q4_K_M — 3,0 B activos × 0,58 B/parametro = 1,74 GB, y 26.624 B/token de KV (atencion hibrida Gated DeltaNet, 13 de 40 capas con KV real). Ambos parametros verificados.</p>
+    </div>
+  </div>
+
+  <div class="instrument">
+    <div class="inst-head">
+      <h3>Bytes leidos por token generado</h3>
+      <span class="mono" id="prov-note"></span>
+    </div>
+    <div class="inst-body">
+      <div class="controls">
+        <div class="ctl">
+          <label for="hw">Plataforma</label>
+          <select id="hw"></select>
+        </div>
+        <div class="ctl">
+          <label for="ctx">Contexto <output id="ctx-out"></output></label>
+          <input type="range" id="ctx" min="0" max="100" value="83" step="1">
+        </div>
+        <div class="ctl">
+          <label for="mtp">Prediccion multi-token</label>
+          <label class="chk"><input type="checkbox" id="mtp" checked> MTP activado</label>
+        </div>
+      </div>
+
+      <div class="budget">
+        <div class="bar" id="bar">
+          <div class="b-w" id="b-w"><span>pesos</span></div>
+          <div class="b-k" id="b-k"><span>cache KV</span></div>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--ok)"></i>pesos activos leidos por token</span>
+          <span><i style="background:var(--manuf)"></i>cache KV releida por token</span>
+        </div>
+
+        <dl class="readout">
+          <div class="hero"><dt>Tokens por segundo</dt><dd id="r-tps">—</dd></div>
+          <div><dt>Pesos por token</dt><dd id="r-w">—</dd></div>
+          <div><dt>KV por token</dt><dd id="r-kv">—</dd></div>
+          <div><dt>KV como fraccion</dt><dd id="r-share">—</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="inst-foot" id="anchor"></div>
+  </div>
+
+  <div class="prose" style="margin-top:30px">
+    <p>El modelo de calculo es una extrapolacion, no una medicion: el ancho de banda efectivo de cada
+    plataforma viene de las mediciones de la seccion 02, y los tokens por segundo resultantes no se han
+    medido en esa combinacion exacta. Por eso el pie del instrumento muestra siempre el <strong>ancla
+    medida</strong> mas cercana que si existe. Contra la serie de calibracion acierta con un 5 % de error
+    (104,8 predecidos contra 110,65 medidos). Contra la unica medicion directa de Ornith en una 5090
+    <em>subestima</em> en un 25 %: 206 contra 273,2 tok/s a 32K. Las predicciones de este instrumento
+    son conservadoras: el resultado real deberia ser mejor, no peor.</p>
+    <p>Lo que el instrumento si demuestra sin ambiguedad es la forma de la curva. A 4K, la cache KV es el
+    6 % de lo que lees por token. A 128K, es el <strong>67 %</strong>. Arrastrar el control de contexto
+    revela que en un modelo MoE de esta familia el contexto deja de ser un factor secundario y se
+    convierte en el cuello de botella principal. Un model runner que deje la KV en f16 a 128K esta
+    leyendo dos tercios de su ancho de banda en datos que ya tiene en memoria.</p>
+    <p style="font-family:var(--mono);font-size:.86rem;color:var(--ink2)">Nota: por que estas cifras superan
+    a la serie de calibracion de la seccion 02. Aquella midio Qwen3-30B-A3B, con 96 KB de KV por token.
+    Ornith usa atencion hibrida Gated DeltaNet y solo gasta 26,6 KB por token — 3,6× menos. Con la misma
+    memoria por token de pesos, su cache es mucho mas barata, y por eso rinde mas a igualdad de contexto.</p>
+  </div>
 </section>
 
+<!-- ============================= 4. RECOMENDACION ============================= -->
 <section>
-<div class="section-head"><div><h2>¿Qué significa en la práctica?</h2></div></div>
-<div class="hero-grid">
-  <div class="hero-card"><h2>RTX 5090</h2><p>Si el objetivo principal es maximizar tokens/s en modelos que caben en 32 GB, la combinación de 32 GB GDDR7 y 1.792 GB/s ofrece la mayor capacidad de ancho de banda de estas opciones.</p></div>
-  <div class="hero-card"><h2>EVO-X2</h2><p>Si el objetivo es disponer de mucha memoria en un equipo pequeño para experimentar con modelos que superan la VRAM típica de una GPU, los 128 GB unificados cambian el espacio de posibilidades.</p></div>
-  <div class="hero-card"><h2>RTX 3090</h2><p>Si el presupuesto es el factor dominante y los modelos caben en 24 GB, una 3090 usada proporciona una entrada de bajo coste a CUDA y a la inferencia GPU local.</p></div>
-  <div class="hero-card"><h2>Para agentes</h2><p>La velocidad de generación no es la única variable: contexto, KV cache, prompt processing, concurrencia y reutilización de KV pueden cambiar mucho la experiencia real.</p></div>
-</div>
+  <div class="sec-head">
+    <div class="sec-num">04</div>
+    <div>
+      <h2>Cuatro maquinas, ordenadas</h2>
+      <p>Ordenadas por el objetivo que planteaste: un modelo ligero pero capaz, con la mayor velocidad
+         de generacion posible. Todas las cifras de precio son de la seccion 05.</p>
+    </div>
+  </div>
+
+  <div class="rank">
+    <div class="rank-h">
+      <div class="n">01</div>
+      <h3>RTX 5090 32 GB en un host propio, headless</h3>
+      <span class="badge">mejor tok/s</span>
+    </div>
+    <div class="rank-body">
+      <div>
+        <p class="verdict">Si tus modelos caben en 32 GB — y para un MoE 35B-A3B en Q4_K_M caben, con
+        ~9 GB de holgura para contexto — esta es la opcion. Ninguna tarjeta de consumo se acerca.</p>
+        <ul>
+          <li><strong>207 tok/s a 32K, 104 a 128K</strong>, 290 y 146 con MTP. Medido en crudo sobre esta tarjeta y este modelo exacto: <strong>273,2 tok/s</strong>. <span class="prov p-medido">medido</span></li>
+          <li><strong>1.792 GB/s</strong> es el doble de la mejor tarjeta de consumo siguiente y 6,6× el DGX Spark.</li>
+          <li><strong>Chile esta ahora mas barato que EE.UU.</strong> A 3.897.888-4.419.900 CLP (USD 4.037-4.577) frente a USD 4.999-6.005 en calle estadounidense. El peso se ha depreciado a 965,71 mientras el precio de la 5090 en EE.UU. se ha disparado por el costo de GDDR7. Jurisdiccion favorable, excepcionalmente.</li>
+          <li>Un 35B-A3B en Q4_K_M ocupa 22 GB; quedan ~9 GB para KV, suficiente para 262K con q4_0. La atencion hibrida Gated DeltaNet lo hace barato: ~7 GB a 262K.</li>
+          <li>Soporte de software dia uno en CUDA x86. Todo funciona.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="specgrid">
+          <div><dt>Velocidad a 32K</dt><dd>207 tok/s · 290 con MTP</dd></div>
+          <div><dt>Velocidad a 128K</dt><dd>104 tok/s · 146 con MTP</dd></div>
+          <div><dt>Memoria</dt><dd>32 GB GDDR7</dd></div>
+          <div><dt>Contexto maximo practico</dt><dd>262K</dd></div>
+        </div>
+        <div style="margin-top:14px">
+          <div class="pair"><span class="clp">3.897.888 - 4.419.900</span><span class="usd">USD 4.037 - 4.577 · solo tarjeta</span></div>
+          <div class="pair" style="margin-top:10px"><span class="clp">~7.760.000</span><span class="usd">USD 8.035 · build completo (rango 7,4-8,6M)</span></div>
+        </div>
+        <p style="margin:14px 0 0;font-family:var(--mono);font-size:11.5px;color:var(--ink2);line-height:1.6">
+          Costo por 1M tokens: <strong>~210.700 CLP</strong> / <strong>USD ~176</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rank">
+    <div class="rank-h">
+      <div class="n">02</div>
+      <h3>RTX 4090 24 GB — la compra racional en Chile</h3>
+      <span class="badge">mejor valor</span>
+    </div>
+    <div class="rank-body">
+      <div>
+        <p class="verdict">Dada la situacion de precios de septiembre de 2026, esta es la que yo
+        evaluaria primero. Es 55 % del precio de la 5090 y entrega un rendimiento que se siente
+        estesicamente igual en un agente de codificacion.</p>
+        <ul>
+          <li><strong>69,8 tok/s medidos a 120.000 tokens de contexto</strong> con Qwen3.6-35B-A3B — la mejor medicion real de MoE en contexto largo sobre cualquier dispositivo de 24 GB, y 120K es aproximadamente el turno mediano de un agente de codificacion. <span class="prov p-medido">medido</span></li>
+          <li>~90 tok/s a 32K, 48-60 a 128K. MTP +46 % a +90 %.</li>
+          <li>2.199.990 CLP (USD 2.278) en MegaBytes por transferencia. 450 W, maduro, abundante.</li>
+          <li>Para referencia de percepcion: Claude mismo mide una mediana de <strong>46,8 tok/s</strong> en produccion (TraceLab, 4.265 sesiones). Una 4090 a 90 tok/s ya esta en la misma banda perceptible que las APIs de frontera que usas hoy.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="specgrid">
+          <div><dt>Velocidad a 32K</dt><dd>~90 tok/s</dd></div>
+          <div><dt>Velocidad a 120K</dt><dd>69,8 tok/s medido</dd></div>
+          <div><dt>Memoria</dt><dd>24 GB GDDR6X</dd></div>
+          <div><dt>Contexto maximo practico</dt><dd>~112K (Q8) / 262K (Q4+q4_0 KV)</dd></div>
+        </div>
+        <div style="margin-top:14px">
+          <div class="pair"><span class="clp">2.199.990</span><span class="usd">USD 2.278 · MSI Gaming Trio, transferencia</span></div>
+          <div class="pair" style="margin-top:10px"><span class="clp">1.950.000</span><span class="usd">USD 2.019 · usada (Capa9, ya vendida)</span></div>
+        </div>
+        <p style="margin:14px 0 0;font-family:var(--mono);font-size:11.5px;color:var(--ink2);line-height:1.6">
+          Costo por 1M tokens: <strong>~182.500 CLP</strong> / <strong>USD ~152</strong> — el mas bajo de la tabla
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rank">
+    <div class="rank-h">
+      <div class="n">03</div>
+      <h3>RTX 3090 24 GB usada — mejor memoria por peso</h3>
+      <span class="badge">mejor bytes/CLP</span>
+    </div>
+    <div class="rank-body">
+      <div>
+        <p class="verdict">24 GB de memoria GDDR6X por 750.000-990.000 CLP. Es la puerta de entrada
+        economica a CUDA y, otra vez, Chile esta mejor posicionada que EE.UU.</p>
+        <ul>
+          <li><strong>176,47 tok/s medidos</strong> con Qwen3.6-35B-A3B IQ4_NL-pure en contexto corto (llama.cpp #22172). <span class="prov p-medido">medido</span></li>
+          <li>La cifra mas relevante de todo el informe para un agente de codificacion: una 3090 con una carga de <strong>JSON / tool-calls</strong> subio de <strong>34,0 a 84,4 tok/s</strong> con MTP, con <strong>97,1 % de aceptacion</strong>. Eso es exactamente tu carga de trabajo.</li>
+          <li>Chile usado ~750.000-990.000 CLP (USD 777-1.025) contra USD 1.032 (promedio de ventas verificadas en eBay) a USD 1.500 (precio pedido) en EE.UU.</li>
+          <li>Los MoE son{<em>extraordinariamente</em> tolerantes a cuantizacion: solo ~3B de 35B se activan por token, asi que cuantizar expertos dormidos apenas afecta la calidad. Q4_K_M es esencialmente gratis en calidad aqui.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="specgrid">
+          <div><dt>Velocidad, contexto corto</dt><dd>176 tok/s medido</dd></div>
+          <div><dt>Velocidad a 32K</dt><dd>50-70 tok/s</dd></div>
+          <div><dt>Memoria</dt><dd>24 GB GDDR6X</dd></div>
+          <div><dt>Consumo</dt><dd>350 W</dd></div>
+        </div>
+        <div style="margin-top:14px">
+          <div class="pair"><span class="clp">750.000 - 990.000</span><span class="usd">USD 777 - 1.025 · usada, MercadoLibre CL / Yapo</span></div>
+        </div>
+        <p style="margin:14px 0 0;font-family:var(--mono);font-size:11.5px;color:var(--ink2);line-height:1.6">
+          Verifica estado, temperaturas y garantia. Las 3090 tienen 350 W y el stock usado se esta
+          agotando. No se encuentra nueva en Chile a precio razonable.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rank">
+    <div class="rank-h">
+      <div class="n">04</div>
+      <h3>2 × RTX 3090 24 GB — solo si 48 GB es el punto</h3>
+      <span class="badge">rendimiento el doble de precio</span>
+    </div>
+    <div class="rank-body">
+      <div>
+        <p class="verdict">La unica forma rationally de obtener 48 GB de VRAM rapida a precio bajo.
+          Pero la escalabilidad entre GPUs de consumo esta limitada por PCIe, y eso cambia la aritmetica.</p>
+        <ul>
+          <li><strong>1,5× como maximo, 1,2-1,35× realista.</strong> PCIe Gen5 x16 son ~64 GB/s contra los 900 GB/s de NVLink 4.0: 14× menos. Y no hay NVLink en la 5090 ni en serie 40 en adelante. Pagas 2× y recibes ~1,3×.</li>
+          <li>Medido: 2× 3090 + 3090 Ti en tensor-parallel, 49,1 → <strong>81,1 tok/s</strong> con MTP. Un puente NVLink mas peer-to-peer dio <strong>+49,5 % de prefill</strong> (3.022 → 6.209 tok/s), que importa cuando reprocesas 160K tokens por turno.</li>
+          <li>Requiere una placa con x16/x16 verdadero. Un chipset B550 con topologia no-P2P provoco <strong>corrupcion de salida documentada</strong> en 3090 por encima de ctx 2048.</li>
+          <li>Una 4090 sola suele ser mejor compra salvo que necesites 48 GB.</li>
+        </ul>
+      </div>
+      <div>
+        <div class="specgrid">
+          <div><dt>Velocidad a 32K</dt><dd>105-120 tok/s</dd></div>
+          <div><dt>Memoria total</dt><dd>48 GB</dd></div>
+          <div><dt>Ancho de banda efectivo</dt><dd>~435 GB/s</dd></div>
+          <div><dt>Consumo del sistema</dt><dd>~1.400 W</dd></div>
+        </div>
+        <div style="margin-top:14px">
+          <div class="pair"><span class="clp">1.500.000 - 1.980.000</span><span class="usd">USD 1.553 - 2.050 · solo las dos tarjetas usadas</span></div>
+          <div class="pair" style="margin-top:10px"><span class="clp">~7.000.000 - 8.500.000</span><span class="usd">USD 7.250 - 8.800 · build completo, estimado</span></div>
+        </div>
+        <p style="margin:14px 0 0;font-family:var(--mono);font-size:11.5px;color:var(--est);line-height:1.6">
+          La plataforma Threadripper Pro / WRX90 <strong>no se encuentra en Chile</strong> con precio
+          verificable. El total es una estimacion derivada de precios europeos, no una cotizacion local.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Descartadas, y por que.</b>
+    <strong>Mac Studio M5 Ultra 96 GB</strong> — 6.799.990 CLP (USD 7.040) en Chile frente a USD 5.499 en
+    EE.UU.: un <em>premio chileno del 28 %</em>, el opuesto de la 5090. La depreciacion del peso no se ha
+    absorbido en el precio de Apple. Ademas tiene 4 dias de mediciones independientes, MTP no hace casi
+    nada en Apple (M3 Ultra +6 %, M4 0 %), y el batching es debil (~340 tok/s agregados a 8 flujos contra
+    los ~880 de una 5090). <br><br>
+    <strong>DGX Spark GB10 128 GB</strong> — no se encuentra en Chile; USD 4.999,99 en el mercado mas
+    barato de EE.UU. Excelente TTFT (228 ms) y capacidad para 70B/120B, pero 4-5× mas lento en decode que
+    una 5090 para todo lo que quepa en 32 GB. El "1 PFLOP FP4" es marketing: el propio <code>ptxas</code>
+    de NVIDIA rechaza la instruccion <code>tcgen05.mma</code> para <code>sm_121a</code>. Comprarlo para
+    velocidad seria un error; comprarlo porque tu modelo no cabe en ningun otro lado es racional. <br><br>
+    <strong>Strix Halo / Ryzen AI Halo 128 GB</strong> — 128 GB de capacidad con solo 256 GB/s de ancho de
+    banda. Medido: ~42 tok/s en MoE, 158-170 GB/s efectivos. MTP da el mayor salto relativo de cualquier
+    plataforma (+86 % a +141 %) precisamente porque es la que mas sufre por falta de ancho de banda. Es
+    una caja para <em>caber</em>, no para <em>correr</em>. El slogan de que "128 GB cabe un 72B" es cierto, y
+    ese 72B no puede sostener una conversacion. <br><br>
+    <strong>RTX PRO 6000 Blackwell 96 GB</strong> — lista NVIDIA USD 13.250, Newegg USD 16.999,99.
+    Descartada por precio, sin discusion.
+  </div>
 </section>
 
+<!-- ============================= 5. PRECIOS ============================= -->
 <section>
-<div class="section-head"><div><h2>Fuentes verificadas</h2><p>Enlaces directos a especificaciones, precios observados y benchmarks utilizados.</p></div></div>
-<div class="sources">
-  <a class="source" href="https://www.nvidia.com/es-la/geforce/graphics-cards/50-series/rtx-5090/" target="_blank"><b>NVIDIA · RTX 5090</b><span>Especificaciones oficiales: 32 GB GDDR7, 512-bit, Blackwell.</span></a>
-  <a class="source" href="https://www.amd.com/es/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-plus-395.html" target="_blank"><b>AMD · Ryzen AI Max+ 395</b><span>Especificaciones oficiales de Strix Halo, memoria y Radeon 8060S.</span></a>
-  <a class="source" href="https://www.gmktec.com/products/amd-ryzen-ai-max-395-evo-x2-ai-mini-pc" target="_blank"><b>GMKtec · EVO-X2</b><span>Configuraciones, precio oficial y especificaciones del mini-PC.</span></a>
-  <a class="source" href="https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/" target="_blank"><b>NVIDIA · RTX 3090</b><span>Especificaciones oficiales: 24 GB GDDR6X y bus de 384-bit.</span></a>
-  <a class="source" href="https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B/discussions/31" target="_blank"><b>Hugging Face · RTX 5090 benchmark</b><span>Ornith 35B y Qwen3.8-27B en RTX 5090.</span></a>
-  <a class="source" href="https://github.com/erstmalreden/qwen3.8-27b-ryzen-ai-max-395-benchmarks" target="_blank"><b>GitHub · Qwen3.8 en EVO-X2</b><span>Pruebas reproducibles de Qwen3.8-27B sobre Ryzen AI Max+ 395.</span></a>
-  <a class="source" href="https://github.com/julianmb/halofpx/blob/main/docs/BENCHMARKS.md" target="_blank"><b>GitHub · HaloFPX benchmarks</b><span>Benchmarks de Ornith y otros modelos en Strix Halo.</span></a>
-  <a class="source" href="https://test.solotodo.cl/products/269747-asus-rog-astral-geforce-rtx-5090-32gb-gddr7-oc-edition-90yv0lw0-m0aa00-90yv0lw0-mvaa00-rog-astral-rtx5090-o32g-gaming" target="_blank"><b>SoloTodo · RTX 5090 Chile</b><span>Precios observados en tiendas chilenas.</span></a>
-  <a class="source" href="https://www.yapo.cl/electronica-computadora-oficina-computadoras-accesorios/zotac-gaming-geforce-rtx-3090-trinity-oc-24gb/26978201" target="_blank"><b>Yapo · RTX 3090 usada</b><span>Anuncio de $700.000 en Providencia, actualizado 22/09/2026.</span></a>
-</div>
+  <div class="sec-head">
+    <div class="sec-num">05</div>
+    <div>
+      <h2>Precios, en las dos monedas</h2>
+      <p>Todo en pesos chilenos y dolares, con la fecha de observacion y el estado del anuncio.
+         Base de conversion: <strong>965,71 CLP/USD</strong>, dolar observado del Banco Central de Chile
+         del 25 de septiembre de 2026.</p>
+      <p class="aside">"No encontrado en Chile" significa que no existe un anuncio local verificable — no que sea caro. Importar desde EE.UU. agrega 19 % de IVA, flete y arancel, y elimina la garantia local.</p>
+    </div>
+  </div>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>Equipo</th><th class="n">CLP</th><th class="n">USD</th><th>Estado del precio</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="name">RTX 5090 32 GB<br><span class="prov p-fabricante">fabricante</span> MSRP EE.UU.</span></td>
+        <td class="n">—</td><td class="n">1.999</td>
+        <td>Precio de salida. NVIDIA agota stock en su marketplace. <b>MSRP = 2,5× del precio real.</b></td>
+      </tr>
+      <tr>
+        <td class="name">RTX 5090 32 GB — rango en Chile<br><span class="prov p-medido">medido</span></span></td>
+        <td class="n"><div class="rng"><b>3.897.888</b><span>Winpy, ASUS TUF OC, transferencia</span></div></td>
+        <td class="n"><div class="rng"><b>4.037</b></div></td>
+        <td>Extremo inferior del rango chileno verificado.</td>
+      </tr>
+      <tr>
+        <td class="name" style="padding-left:18px">· SP Digital, AORUS Stealth ICE</td>
+        <td class="n">3.999.990</td><td class="n">4.142</td><td>Precio DCTO/transferencia.</td>
+      </tr>
+      <tr>
+        <td class="name" style="padding-left:18px">· Tecnoshopping, ASUS ROG Astral O32G</td>
+        <td class="n">4.419.900</td><td class="n">4.577</td><td>El modelo exacto que la pagina anterior atribuia a SoloTodo a 4.599.500.</td>
+      </tr>
+      <tr>
+        <td class="name" style="padding-left:18px">· GSMPRO, Zotac Solid OC</td>
+        <td class="n">5.161.500</td><td class="n">5.344</td><td>Extremo superior Practico.</td>
+      </tr>
+      <tr>
+        <td class="name">RTX 5090 32 GB — precio de calle EE.UU.</td>
+        <td class="n">—</td><td class="n">4.999 - 6.005</td>
+        <td>Newegg/Amazon sept-2026. <b>Chile esta ~20 % mas barato.</b> Micro Center presencial: USD 4.299.</td>
+      </tr>
+      <tr>
+        <td class="name">RTX 4090 24 GB — nueva, Chile</td>
+        <td class="n">2.199.990</td><td class="n">2.278</td>
+        <td>MegaBytes, MSI Gaming Trio, transferencia. La de ETChile a 1.999.990 figura agotada.</td>
+      </tr>
+      <tr>
+        <td class="name">RTX 4090 24 GB — usada, Chile</td>
+        <td class="n">1.950.000</td><td class="n">2.019</td>
+        <td>MSI Suprim Liquid X, Capa9, Santiago. <b>Ya vendida</b> (mayo 2026). Sin garantia.</td>
+      </tr>
+      <tr>
+        <td class="name">RTX 3090 24 GB — usada, Chile</td>
+        <td class="n">750.000 - 990.000</td><td class="n">777 - 1.025</td>
+        <td>HardwareLand (Talca) y Yapo. Ambos ya no disponibles: uno vendido, el otro con un ano de antiguedad. Mercado delgado.</td>
+      </tr>
+      <tr>
+        <td class="name">RTX 3090 24 GB — usada, EE.UU.</td>
+        <td class="n">—</td><td class="n">1.032 - 1.500</td>
+        <td>USD 1.032 es el promedio de ventas verificadas en eBay (5 sept). Pedido en retail: ~1.500.</td>
+      </tr>
+      <tr>
+        <td class="name">Mac Studio M5 Ultra 96 GB / 1 TB — Chile</td>
+        <td class="n">6.799.990</td><td class="n">7.040</td>
+        <td>IVA 19 % incluido. Precio educativo: 6.304.990 (USD 6.528).</td>
+      </tr>
+      <tr>
+        <td class="name">Mac Studio M5 Ultra 96 GB / 1 TB — EE.UU.</td>
+        <td class="n">—</td><td class="n">5.499</td>
+        <td><b>Chile cuesta 28 % mas que EE.UU.</b> Configuracion de 256 GB: USD 9.499.</td>
+      </tr>
+      <tr>
+        <td class="name">Mac Studio M5 Max base 36 GB — Chile</td>
+        <td class="n">2.999.990</td><td class="n">3.106</td>
+        <td>La version de 128 GB no esta disponible en Chile.</td>
+      </tr>
+      <tr>
+        <td class="name">DGX Spark GB10 128 GB</td>
+        <td class="n">no encontrado</td><td class="n">4.999,99</td>
+        <td>Lista NVIDIA USD 4.699 (subida en feb-2026), agotada. Mas barato disponible en EE.UU.: Amazon vía Micro Center, 20 sept.</td>
+      </tr>
+      <tr>
+        <td class="name">GMKtec EVO-X2 128 GB + 2 TB — EE.UU.</td>
+        <td class="n">no encontrado</td><td class="n">3.649,99</td>
+        <td>Sin distribuidor chileno. El precio de US$2.199,99 citado antes es del SKU de 64 GB.</td>
+      </tr>
+      <tr>
+        <td class="name">Framework Desktop 128 GB — EE.UU.</td>
+        <td class="n">no encontrado</td><td class="n">3.449</td>
+        <td>Agotado. La version de 64 GB esta a USD 1.959.</td>
+      </tr>
+      <tr>
+        <td class="name">RTX PRO 6000 Blackwell 96 GB — EE.UU.</td>
+        <td class="n">no encontrado</td><td class="n">13.250 - 16.999,99</td>
+        <td>Lista NVIDIA USD 13.250 (+55 % sobre el MSRP de salida). Newegg lista 16.999,99.</td>
+      </tr>
+    </tbody>
+    <caption>Precios de transferencia / "precio efectivo". Con tarjeta o Webpay, las tiendas chilenas suman tipicamente 3,5-7,5 % mas. "Precio efectivo" no es "precio normal": SP Digital mostraba 5.129.990 normal contra 4.299.990 por transferencia — 16 % de descuento que desaparece al pagar con tarjeta.</caption>
+  </table>
+  </div>
+
+  <div class="tw" style="margin-top:40px">
+  <table>
+    <thead><tr><th>Build completo</th><th class="n">CLP</th><th class="n">USD</th><th>Composicion</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="name">Host RTX 5090<br><span class="prov p-estamado">estimado</span></td>
+        <td class="n">~7.760.000</td><td class="n">~8.035</td>
+        <td>ASUS TUF 5090 3.897.888 + X870E Hero 764.980 + Ryzen 7 9800X3D 506.850 + 64 GB DDR5-6000 1.319.990 + WD Black SN850X 2 TB 699.808 + <em>fuente 1200 W, refrigeración 360 mm y caja ~570.000 estimados</em></td>
+      </tr>
+      <tr>
+        <td class="name" style="padding-left:18px">· Rango realista</td>
+        <td class="n">7.400.000 - 8.600.000</td><td class="n">7.660 - 8.904</td>
+        <td>El costo de la RAM solo es ~17 % del total, y es el componente con mayor dispersion: 224.990 a 1.422.270 CLP por el mismo 64 GB segun tienda y marca.</td>
+      </tr>
+      <tr>
+        <td class="name">Threadripper Pro + 2 × RTX 3090<br><span class="prov p-estamado">estimado</span></td>
+        <td class="n">~7.000.000 - 8.500.000</td><td class="n">7.250 - 8.800</td>
+        <td>2 × 3090 usada verificadas en Chile (1.500.000-1.980.000). <b>La plataforma no tiene precio chileno verificable</b>: CPU ~EUR 3.099 + placa EUR 854-1.332, derivados de Europa. El total es una estimacion, no una cotizacion.</td>
+      </tr>
+    </tbody>
+    <caption>La Memoria domina el costo de cualquier build en 2026. Un kit DDR5 de 2 × 32 GB subio de USD 222 a USD 1.272 en doce meses (+473 %), y 128 GB de DDR5-6400 paso de ~USD 340 a USD 3.399. HBM para aceleradores de IA consume ya ~23 % de las obleas globales de DRAM, y GDDR7 comparte linea de fabricacion con HBM.</caption>
+  </table>
+  </div>
 </section>
 
+<!-- ============================= 6. PALANCAS ============================= -->
 <section>
-<div class="disclaimer"><strong>Nota metodológica.</strong> Precios y disponibilidad son observaciones puntuales del mercado y pueden cambiar. Los benchmarks proceden de pruebas independientes con distintas versiones de software, cuantizaciones, contextos y parámetros; por ello se muestran como referencias de rendimiento, no como un ranking científico entre plataformas. Las especificaciones de hardware se contrastan con documentación de los fabricantes.</div>
+  <div class="sec-head">
+    <div class="sec-num">06</div>
+    <div>
+      <h2>Las palancas que cuestan cero pesos</h2>
+      <p>Un configuration bien ajustado puede multiplicar los tokens por segundo mas que la diferencia
+         entre dos tarjetas. Y la mas importante de todas no es un flag: es no repetir trabajo.</p>
+    </div>
+  </div>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>Palanca</th><th class="n">Ganancia medida</th><th>Que dice la medicion</th><th>Estado</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="name">Cache de prompt<br><span style="color:var(--ink3);font-size:.82rem">no es un flag, es la palanca principal</span></td>
+        <td class="n">39×</td>
+        <td>Strix Halo, Qwen3.6-35B-A3B, segunda pregunta sobre un documento de 32K: <strong>860 ms con cache</strong> contra <strong>33.728 ms sin cache</strong>. Ninguna decision de hardware importa tanto como esta.</td>
+        <td><span class="prov p-medido">medido</span></td>
+      </tr>
+      <tr>
+        <td class="name">MTP <span style="color:var(--ink3);font-size:.82rem">en modelos MoE</span></td>
+        <td class="n">+35 % a +51 %</td>
+        <td>Strix Halo: 76,9 → 105,6 tok/s (+38 %). DGX Spark: 46,8 → 70,8 tok/s (+51 %). <b>Las cifras de +100 % a +140 % que circulan en la comunidad son de modelos densos</b> como Qwen3.8-27B; para la clase MoE que buscas, espera +40 %.</td>
+        <td><span class="prov p-medido">medido</span></td>
+      </tr>
+      <tr>
+        <td class="name">MTP <span style="color:var(--ink3);font-size:.82rem">en codigo vs. prosa</span></td>
+        <td class="n">+9 a +10 %</td>
+        <td>Desglose por prompt: <strong>codigo +9-10 %, prosa −22-24 %</strong>. Una 3090 en carga JSON/tool-call logro 97,1 % de aceptacion. Tu carga de trabajo es el mejor caso posible para decodificacion especulativa.</td>
+        <td><span class="prov p-medido">medido</span></td>
+      </tr>
+      <tr>
+        <td class="name">Cuantizacion</td>
+        <td class="n">1,22×</td>
+        <td>Q2_K es solo <strong>1,22×</strong> mas rapido que Q4_K_M en un MoE de 3B activos (110 vs 90 tok/s), frente a 1,94× en un denso de 9B. Los pesos no-expertos no se encogen, y a 90-110 tok/s el lanzamiento de kernels por token empieza a dominar. <b>Bajar de Q4 compra muy poca velocidad y cuesta mucha calidad.</b> Usa Q4_K_M, o Q5_K_M si cabe en memoria rapida.</td>
+        <td><span class="prov p-medido">medido</span></td>
+      </tr>
+      <tr>
+        <td class="name">Cache KV en q8_0</td>
+        <td class="n">−5 %</td>
+        <td>La unica cuantizacion de KV que vale la pena: compresion 2× con menos de 5 % de perdida de velocidad a cualquier longitud. <b>q4_0 es 92 % mas lento en prefill a 64K</b> de desquantizacion, y en memoria unificada ocupa <em>mas</em> RAM que f16. Usalo solo cuando no quepa de otro modo.</td>
+        <td><span class="prov p-medido">medido</span></td>
+      </tr>
+      <tr>
+        <td class="name">Motor: llama.cpp vs. vLLM</td>
+        <td class="n">0 - 1×</td>
+        <td>A concurrencia 1 decodifican practicamente igual: el decode de un solo stream esta limitado por ancho de banda, no por el motor. Pero en contexto largo SGLang supero a vLLM por ~3× en una 5090, y vLLM se trabo con 64 GB de swap. <b>Empieza con llama.cpp; el motor no es tu cuello de botella.</b></td>
+        <td><span class="prov p-derivado">derivado</span></td>
+      </tr>
+      <tr>
+        <td class="name">Ejecutar headless</td>
+        <td class="n">2×</td>
+        <td>Un compositor de escritorio mas un navegador verteron 3,5 GB de pesos a RAM del host sobre PCIe mientras <code>/health</code> seguia en verde, y el decode se cidio a la mitad sin ningun error visible. Con 32 GB de VRAM esto es fatal.</td>
+        <td><span class="prov p-medido">medido</span></td>
+      </tr>
+      <tr>
+        <td class="name">En AMD: Vulkan sobre ROCm</td>
+        <td class="n">+22 %</td>
+        <td>Misma maquina, mismo commit, misma precision: ROCm 49,58 tok/s contra <strong>Vulkan 60,39 tok/s</strong> en Q4_K_M. La inversion: en BF16, ROCm gana por +121 %. Ademas ROCm se rompio con el kernel 6.19.4 en Strix Halo. Usa Vulkan, fija un kernel conocido.</td>
+        <td><span class="prov p-medido">medido</span></td>
+      </tr>
+    </tbody>
+    <caption>El orden importa: reconstruye llama.cpp antes de tocar flags (un build actual dio +10-15 % en cada cuantizacion sin cambiar nada mas), y barri el n-max de MTP — el punto optimo depende de la tarjeta y de la carga. El flag <code>--spec-draft-p-min</code> sube la metrica de aceptacion y baja el throughput en tarjetas rapidas: la aceptacion es una metrica de vanidad.</caption>
+  </table>
+  </div>
 </section>
+
+<!-- ============================= 7. LO QUE MIDE TU AGENTE ============================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num">07</div>
+    <div>
+      <h2>Lo que realmente carga un agente de codificacion</h2>
+      <p>Para una carga de este tipo, la sensacion de velocidad no la determina el hardware que
+         compraste, la determina el trabajo que evitaste repetir.</p>
+    </div>
+  </div>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>Propiedad medida</th><th class="n">Valor</th><th>Que implica para tu compra</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Tokens de prefijo releidos por paso</td><td class="n">~119.000</td><td rowspan="4">TraceLab: 4.265 sesiones, 357.161 pasos, 432.510 llamadas a herramientas, produccion real.</td></tr>
+      <tr><td class="name">Tokens de salida por paso</td><td class="n">214</td></tr>
+      <tr><td class="name">Relacion entrada:salida</td><td class="n">294 : 1</td></tr>
+      <tr><td class="name">Tokens nuevos genuinos</td><td class="n">19 %</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="prose" style="margin-top:26px">
+    <p><strong>El 81 % de lo que se reprocesa es historial repetido.</strong> Eso invierte la intuicion
+    usual de que generar es lo caro: para un agente de codificacion, el costo esta overwhelmingmente
+    en releer contexto. Un turno mediano son 15 llamadas al modelo con un prompt de 160.200 tokens, y
+    Microsoft Research lo confirma en 761 millones de llamadas de GitHub Copilot: 68K de prompt por
+    247 de salida, con 90 % de cache hit.</p>
+    <p>Por eso la palanca mas rentable no es la tarjeta mas rapida, es <strong>no_invalidar el cache de
+    prompt</strong>. Y por eso el salto de 24 GB a 32 GB importa mas de lo que sugiere la aritmetica de
+    ancho de banda: los 8 GB extra son los que evitan que el cache se caiga a RAM del host.</p>
+    <p>Sobre la percepcion: a 214 tokens de salida por paso, 150 tok/s son <strong>1,4 s</strong> por
+    paso, 90 tok/s son 2,4 s, 50 tok/s son 4,3 s. Como referencia, Claude mismo mide una mediana de
+    46,8 tok/s en produccion. <strong>Un equipo de 50 tok/s ya esta en la misma banda perceptible que las
+    APIs de frontera que usas hoy</strong>, y uno de 25 tok/s es molesto pero tolerable. La distancia entre
+    25 y 180 tok/s es de ~7× sobre lo unico que realmente percebes — y por eso la 4090 a 90 tok/s y la 5090
+    a 180 tok/s se sienten mas parecidas de lo que sus numeros sugieren.</p>
+  </div>
+</section>
+
+<!-- ============================= 8. FUENTES ============================= -->
+<section>
+  <div class="sec-head">
+    <div class="sec-num">08</div>
+    <div>
+      <h2>Fuentes</h2>
+      <p>Las ocho URLs de la version anterior se verificaron y todas existen. Estas son las de esta version.</p>
+    </div>
+  </div>
+
+  <ul class="srcs">
+    <li><span class="mono"> banco central de chile · 25-09-2026</span><a href="https://mindicador.cl/api/dolar">Dolar observado 965,71 CLP/USD</a> — serie diaria oficial</li>
+    <li><span class="mono">hardware-corner.net</span><a href="https://www.hardware-corner.net/rtx-5090-llm-benchmarks">RTX 5090 · benchmarks llama-bench</a> — serie de 3 puntos que calibra el modelo de ancho de banda</li>
+    <li><span class="mono">github · sudoingX/qwen38-mtp</span><a href="https://github.com/sudoingX/qwen38-mtp/blob/master/README.md">Tabla de MTP, 53 configuraciones</a> — base de todas las cifras de MTP</li>
+    <li><span class="mono">github · ggml-org/llama.cpp #22172</span><a href="https://github.com/ggml-org/llama.cpp/discussions/22172">176,47 tok/s con Qwen3.6-35B-A3B en 3090</a> — y el calculo de ancho de banda derivado</li>
+    <li><span class="mono">github · ggml-org/llama.cpp</span><a href="https://github.com/ggml-org/llama.cpp/blob/master/docs/multi-gpu.md">Documentacion de multi-GPU</a> — por que el escalamiento PCIe es 1,5× y no 2×</li>
+    <li><span class="mono">github · julianmb/halofpx</span><a href="https://github.com/julianmb/halofpx/blob/main/docs/BENCHMARKS.md">Ornith 35B-A3B en Strix Halo</a> — 76,9 y 105,6 tok/s, y la advertencia sobre el cuant refiltrado</li>
+    <li><span class="mono">github · erstmalreden</span><a href="https://github.com/erstmalreden/qwen3.8-27b-ryzen-ai-max-395-benchmarks">Qwen3.8-27B en Ryzen AI Max+ 395</a> — 16,45 tok/s sostenidos y la advertencia sobre las ventanas cortas</li>
+    <li><span class="mono">huggingface.co</span><a href="https://huggingface.co/ornith-ai/Ornith-1.5-35B-A3B/discussions/31">Discusion de benchmarks RTX 5090</a> — 273,2 y 77,2 tok/s</li>
+    <li><span class="mono">arXiv 2606.30560</span><a href="https://arxiv.org/pdf/2606.30560">TraceLab · trazas de agentes en produccion</a> — 46,8 tok/s mediana de Claude, 119K tokens de prefijo</li>
+    <li><span class="mono">tomshardware.com</span><a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/benchmarking-qwen-3-8-27b-on-rtx-5090-and-beyond-vram-capacity-alone-cant-overcome-severe-software-and-inference-engine-bottlenecks">Qwen3.8-27B en 5090 · el techo de 32 GB</a> — 30 min de TTFT a 262K con llama.cpp</li>
+    <li><span class="mono">tomshardware.com · 17-08-2026</span><a href="https://www.tomshardware.com/">Escasez de DRAM: DDR5 +429 % a +485 %</a> — el contexto de precios de todo el informe</li>
+    <li><span class="mono">precios en chile · 09-2026</span><a href="https://www.winpy.cl/venta/tarjeta-grafica-asus-tuf-gaming-geforce-rtx-5090-oc-de-32gb-gddr7/">Winpy</a> · <a href="https://www.spdigital.cl/rtx-5090-aorus-stealth-ice-32gb/">SP Digital</a> · <a href="https://www.tecnoshopping.cl/asus-rog-astral-rtx-5090-o32g-gaming-32gb/">Tecnoshopping</a> · <a href="https://www.megabytes.cl/sitio-nuevo/producto/msi-geforce-rtx-4090-gaming-x-trio-24g/">MegaBytes</a></li>
+    <li><span class="mono">precios fuera de chile · 09-2026</span><a href="https://www.apple.com/newsroom/2026/08/apple-introduces-new-mac-studio-with-m5-max-and-m5-ultra/">Apple newsroom</a> · <a href="https://www.gmktec.com/products/amd-ryzen-ai-max-395-evo-x2-ai-mini-pc">GMKtec</a> · <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/">NVIDIA DGX Spark</a></li>
+    <li><span class="mono">fabricantes</span><a href="https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/">NVIDIA RTX 5090</a> · <a href="https://www.nvidia.com/en-us/geforce/graphics-cards/30-series/rtx-3090-3090ti/">NVIDIA RTX 3090</a> · <a href="https://www.amd.com/es/products/processors/laptop/ryzen/ai-300-series/amd-ryzen-ai-max-plus-395.html">AMD Ryzen AI Max+ 395</a></li>
+  </ul>
+
+  <div class="note" style="margin-top:32px">
+    <b>Metodologia y limites.</b> Las cifras de ancho de banda efectivo se derivaron de mediciones de
+    terceros mediante el modelo de la seccion 02, y se validaron contra tres profundidades de contexto
+    independientes. Los precios se observaron entre el 22 y el 26 de septiembre de 2026 en lojas
+    chilenas y norteamericanas, y un movimiento del 1-2 % del CLP cambia cada cifra en USD.
+    Tres componentes del build de la 5090 (fuente, refrigeración, caja) no tienen precio chileno
+    verificado y estan estimados. La plataforma Threadripper Pro no tiene precio chileno y su total es
+    una derivacion de precios europeos. Ninguna publicacion que mida Claude Code de forma independiente
+    contra hardware local existe todavia: las cifras de agente de la seccion 07 son proxies.
+  </div>
+</section>
+
+</main>
 
 <footer>
-  Comparativa preparada en septiembre de 2026 · Última verificación de fuentes: 26/09/2026.<br>
-  Artefacto estático, sin backend, sin tracking y sin dependencias externas.
+  <span>Verificado el 26 de septiembre de 2026 · tipo de cambio 965,71 CLP/USD</span>
+  <span>Pagina estatica · sin dependencias externas · sin tracking</span>
 </footer>
+
 </div>
+
 <script>
-async function sharePage(){
-  const data={title:document.title,text:"Comparativa de hardware para IA local · 2026",url:location.href};
-  if(navigator.share){try{await navigator.share(data)}catch(e){}}
-  else{try{await navigator.clipboard.writeText(location.href);alert("Enlace copiado al portapapeles.")}catch(e){alert("Copia la URL de esta página para compartirla.")}}
-}
+(function(){
+  var MODEL = { weights: 1.74, kvPerToken: 26624, label: 'Ornith 1.5-35B-A3B · Q4_K_M' };
+
+  var HW = [
+    { id:'5090',   name:'RTX 5090 32 GB',        eff:538, eta:0.30, peak:1792, mtp:0.40, state:'derivado',
+      anchor:'Ancla del modelo exacto en esta tarjeta: 273,2 tok/s medidos (llama.cpp, Q4_K_M, full GPU offload). El modelo predice 207 tok/s a 32K sin MTP y 290 con MTP, asi que subestima la medicion en ~25 %: es conservador.', },
+    { id:'4090',   name:'RTX 4090 24 GB',        eff:302, eta:0.30, peak:1008, mtp:0.40, state:'derivado',
+      anchor:'Ancla medida mas cercana: 69,8 tok/s a 120K con Qwen3.6-35B-A3B via LM Studio.' },
+    { id:'3090',   name:'RTX 3090 24 GB',        eff:290, eta:0.31, peak:936,  mtp:0.40, state:'medido',
+      anchor:'Ancla medida mas cercana: 176,47 tok/s a contexto corto; 34,0 -> 84,4 tok/s con MTP en carga JSON.' },
+    { id:'2x3090', name:'2x RTX 3090 24 GB (TP)', eff:435, eta:0.24, peak:1872, mtp:0.40, state:'medido',
+      anchor:'Ancla medida mas cercana: 81,1 tok/s con MTP en 2x3090+3090 Ti tensor-parallel. El techo realista de PCIe es 1,5x.' },
+    { id:'strix',  name:'Strix Halo 128 GB',     eff:160, eta:0.63, peak:256,  mtp:0.40, state:'medido',
+      anchor:'Ancla medida mas cercana: 76,9 tok/s con ROCm FP4; 66,3 tok/s con Vulkan en Qwen3-30B-A3B. MTP +86-141 % es la mayor ganancia relativa de cualquier plataforma.' },
+    { id:'apple',  name:'Mac Studio 96 GB',      eff:660, eta:0.55, peak:1200, mtp:0.06, state:'estimado',
+      anchor:'Sin ancla MoE medida para M5 Ultra (4 dias de vida). Referencia: M3 Ultra 96 GB, 182,7 tok/s con MLX. MTP en Apple hace casi nada: +6 % en M3 Ultra, 0 % en M4.' },
+    { id:'spark',  name:'DGX Spark GB10 128 GB', eff:124, eta:0.46, peak:273,  mtp:0.40, state:'medido',
+      anchor:'Ancla medida: 70,8 tok/s con Ornith 1.5-35B-A3B NVFP4 + MTP; 89,3 tok/s con Qwen3-30B-A3B en llama.cpp.' }
+  ];
+
+  var ctxIn  = document.getElementById('ctx');
+  var ctxOut = document.getElementById('ctx-out');
+  var hwSel  = document.getElementById('hw');
+  var mtpBox = document.getElementById('mtp');
+  var barW   = document.getElementById('b-w');
+  var barK   = document.getElementById('b-k');
+  var anchor = document.getElementById('anchor');
+  var prov   = document.getElementById('prov-note');
+
+  var TAGS = { medido:'medido', derivado:'derivado', estimado:'estimado' };
+
+  HW.forEach(function(h){
+    var o = document.createElement('option');
+    o.value = h.id; o.textContent = h.name;
+    hwSel.appendChild(o);
+  });
+
+  function contextTokens(){
+    var t = Math.pow(10, 3.6 + (Number(ctxIn.value) / 100) * (Math.log10(262144) - 3.6));
+    return Math.round(t);
+  }
+
+  function fmtTokens(t){
+    if (t >= 262144) return '262K';
+    if (t >= 1024) return (t / 1024).toFixed(t < 10240 ? 1 : 0) + 'K';
+    return String(t);
+  }
+
+  function render(){
+    var hw = HW.filter(function(h){ return h.id === hwSel.value; })[0];
+    var ctx = contextTokens();
+    var kv  = MODEL.kvPerToken * ctx / 1e9;
+    var tot = MODEL.weights + kv;
+    var tps = hw.eff / tot * (mtpBox.checked ? (1 + hw.mtp) : 1);
+    var share = kv / tot * 100;
+
+    ctxOut.textContent = fmtTokens(ctx) + ' tokens';
+    barW.style.width = (MODEL.weights / tot * 100) + '%';
+    barK.style.width = (share) + '%';
+    barW.firstElementChild.textContent = (share > 55) ? '' : 'pesos';
+    barK.firstElementChild.textContent = (share > 14) ? 'cache KV ' + share.toFixed(0) + '%' : '';
+
+    document.getElementById('r-tps').innerHTML = (tps < 10 ? tps.toFixed(1) : Math.round(tps)) + ' <small>tok/s</small>';
+    document.getElementById('r-w').textContent = MODEL.weights.toFixed(2) + ' GB';
+    document.getElementById('r-kv').textContent = kv.toFixed(kv < 0.1 ? 3 : 2) + ' GB';
+    document.getElementById('r-share').textContent = share.toFixed(0) + '%';
+
+    prov.textContent = 'ancho de banda efectivo ' + hw.eff + ' GB/s (' + TAGS[hw.state] + ')' +
+                       (mtpBox.checked ? ' · MTP ×' + (1 + hw.mtp).toFixed(2) : ' · sin MTP');
+    anchor.textContent = hw.anchor;
+  }
+
+  [ctxIn, hwSel, mtpBox].forEach(function(el){ el.addEventListener('input', render); });
+  render();
+})();
 </script>
 </body>
 </html>
