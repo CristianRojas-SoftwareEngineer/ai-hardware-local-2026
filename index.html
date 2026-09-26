@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090d16">
-<meta name="description" content="Guía interactiva de hardware para IA local y agentes de código (Claude Code, OpenCode). Comparativas de velocidad, capacidad, precio y concurrencia en Chile (CLP y USD).">
-<title>Hardware para IA Local & Agentes · Guía de Compra 2026</title>
+<meta name="description" content="Guía interactiva y comparativa de hardware para IA local y agentes de código (Claude Code, OpenCode). Top 3 por 5 dimensiones: Precio, Velocidad, Capacidad, Concurrencia y Balance General (CLP / USD).">
+<title>Hardware para IA Local & Agentes · Top 3 en 5 Dimensiones (2026)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
   --brand-emerald: #10b981;
   --brand-indigo: #818cf8;
   --brand-amber: #f59e0b;
-  --brand-rose: #f43f5e;
+  --brand-purple: #c084fc;
   
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -287,7 +287,7 @@ section {
   max-width: 68ch;
 }
 
-/* 4 Dimensions Tabs */
+/* 5 Dimensions Tabs */
 .dim-nav {
   display: flex;
   gap: 10px;
@@ -340,7 +340,7 @@ section {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Dimension Cards Grid */
+/* Dimension Cards Grid (Exact 3 Cards) */
 .card-grid-3 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -386,6 +386,7 @@ section {
 .badge-pill.emerald { background: rgba(16, 185, 129, 0.15); color: var(--brand-emerald); border: 1px solid rgba(16, 185, 129, 0.3); }
 .badge-pill.amber { background: rgba(245, 158, 11, 0.15); color: var(--brand-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
 .badge-pill.indigo { background: rgba(129, 140, 248, 0.15); color: var(--brand-indigo); border: 1px solid rgba(129, 140, 248, 0.3); }
+.badge-pill.purple { background: rgba(192, 132, 252, 0.15); color: var(--brand-purple); border: 1px solid rgba(192, 132, 252, 0.3); }
 
 .card-kicker {
   font-family: var(--font-mono);
@@ -895,39 +896,146 @@ footer a:hover { text-decoration: underline; }
     </div>
   </header>
 
-  <!-- Section 1: The 4 Dimensions -->
+  <!-- Section 1: The 5 Dimensions (Top 3 on each) -->
   <section id="dimensiones">
     <div class="section-header">
       <span class="section-tag">01 · Criterios de Selección</span>
-      <h2 class="section-title">Las 4 Dimensiones de Hardware</h2>
+      <h2 class="section-title">Top 3 en las 5 Dimensiones de Hardware</h2>
       <p class="section-desc">
-        No existe una sola máquina ideal para todo: la mejor opción depende de si priorizas el presupuesto, la velocidad pura por token, la capacidad de memoria para modelos masivos o la concurrencia de múltiples agentes.
+        No existe una sola máquina ideal para todo: la mejor opción depende de tu prioridad técnica. Explora el podio Top 3 según la dimensión que más te interese.
       </p>
     </div>
 
     <!-- Dimension Navigation Tabs -->
     <div class="dim-nav">
-      <button class="dim-tab-btn active" onclick="showDimension('dim-precio')">
-        <span>💰</span> 1. Mejor Precio / Economía
+      <button class="dim-tab-btn active" onclick="showDimension('dim-balance')">
+        <span>⚖️</span> 1. La Mejor Balanceada
+      </button>
+      <button class="dim-tab-btn" onclick="showDimension('dim-precio')">
+        <span>💰</span> 2. Mejor Precio / Economía
       </button>
       <button class="dim-tab-btn" onclick="showDimension('dim-velocidad')">
-        <span>⚡</span> 2. Velocidad Máxima (tok/s)
+        <span>⚡</span> 3. Velocidad Máxima (tok/s)
       </button>
       <button class="dim-tab-btn" onclick="showDimension('dim-capacidad')">
-        <span>🧠</span> 3. Capacidad Máxima (VRAM)
+        <span>🧠</span> 4. Capacidad Máxima (VRAM)
       </button>
       <button class="dim-tab-btn" onclick="showDimension('dim-concurrencia')">
-        <span>🔄</span> 4. Concurrencia & Agentes
+        <span>🔄</span> 5. Concurrencia & Agentes
       </button>
     </div>
 
-    <!-- Dimension 1: Price / Economy -->
-    <div id="dim-precio" class="dim-panel active">
+    <!-- Dimension 5: Best Balanced (Sweet Spot) -->
+    <div id="dim-balance" class="dim-panel active">
+      <div class="card-grid-3">
+        <!-- Balance Top 1: 4090 -->
+        <div class="dim-card featured">
+          <div class="badge-pill emerald">Top 1 · Balance Maestro</div>
+          <div class="card-kicker">EL SWEET SPOT EN CHILE (2026)</div>
+          <h3 class="card-title-lg">RTX 4090 24GB</h3>
+          <div class="card-sub">El equilibrio perfecto entre precio, velocidad y estabilidad</div>
+
+          <div class="price-box-mini">
+            <div class="price-line">
+              <span class="price-lbl">GPU (MegaBytes):</span>
+              <span class="price-num green" data-clp="2199990" data-usd="2278">$2.199.990 CLP</span>
+            </div>
+            <div class="price-line">
+              <span class="price-lbl">Build Completo (Est.):</span>
+              <span class="price-num" data-clp="4800000" data-usd="4970">~$4.800.000 CLP</span>
+            </div>
+          </div>
+
+          <div class="specs-grid-mini">
+            <div class="spec-cell"><div class="spec-cell-lbl">VRAM</div><div class="spec-cell-val">24 GB GDDR6X</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Bandwidth</div><div class="spec-cell-val">1.008 GB/s</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Velocidad 120k</div><div class="spec-cell-val">69.8 tok/s (Medido)</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Consumo</div><div class="spec-cell-val">450W / 1000W PSU</div></div>
+          </div>
+
+          <ul class="bullet-list">
+            <li><strong>55% del costo de la 5090</strong> entregando más velocidad que la API de Claude Sonnet (~46.8 tok/s).</li>
+            <li>24 GB albergan holgadamente Ornith 35B MoE con hasta 120k-140k tokens de contexto KV.</li>
+            <li>El costo por 1M de tokens más bajo de todo el mercado (~$152 USD amortizado).</li>
+          </ul>
+          <div class="card-footer-tip">La compra más racional en Chile si buscas máximo valor sin gastar 8 millones.</div>
+        </div>
+
+        <!-- Balance Top 2: 5090 -->
+        <div class="dim-card">
+          <div class="badge-pill cyan">Top 2 · Flagship Futuro</div>
+          <div class="card-kicker">MÁXIMA LONGEVIDAD Y VELOCIDAD</div>
+          <h3 class="card-title-lg">RTX 5090 32GB</h3>
+          <div class="card-sub">Inversión definitiva para contexto extremo (262k)</div>
+
+          <div class="price-box-mini">
+            <div class="price-line">
+              <span class="price-lbl">GPU (Winpy/SP Digital):</span>
+              <span class="price-num green" data-clp="3897888" data-usd="4037">$3.897.888 CLP</span>
+            </div>
+            <div class="price-line">
+              <span class="price-lbl">Build Completo (Est.):</span>
+              <span class="price-num" data-clp="7760000" data-usd="8035">~$7.760.000 CLP</span>
+            </div>
+          </div>
+
+          <div class="specs-grid-mini">
+            <div class="spec-cell"><div class="spec-cell-lbl">VRAM</div><div class="spec-cell-val">32 GB GDDR7</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Bandwidth</div><div class="spec-cell-val">1.792 GB/s</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Velocidad 32k</div><div class="spec-cell-val">207 - 290 tok/s</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Contexto MoE</div><div class="spec-cell-val">262k nativo</div></div>
+          </div>
+
+          <ul class="bullet-list">
+            <li>32 GB eliminan cualquier cuello de botella de contexto en agentes intensivos.</li>
+            <li>Velocidad sin rival: respuestas de 250 tokens en menos de 1 segundo.</li>
+            <li>Chile ofrece precios más ventajosos que el mercado de reventa de EE.UU.</li>
+          </ul>
+          <div class="card-footer-tip">Para desarrolladores que no quieren hacer ningún compromiso en velocidad o memoria.</div>
+        </div>
+
+        <!-- Balance Top 3: 2x 3090 Workstation -->
+        <div class="dim-card">
+          <div class="badge-pill indigo">Top 3 · Workstation 48GB</div>
+          <div class="card-kicker">GRAN MEMORIA POR PESO</div>
+          <h3 class="card-title-lg">2x RTX 3090 (48 GB)</h3>
+          <div class="card-sub">Capacidad de modelos grandes al costo de una sola 5090</div>
+
+          <div class="price-box-mini">
+            <div class="price-line">
+              <span class="price-lbl">2x GPUs Usadas (Chile):</span>
+              <span class="price-num green" data-clp="1700000" data-usd="1760">~$1.700.000 CLP</span>
+            </div>
+            <div class="price-line">
+              <span class="price-lbl">Build Completo (Est.):</span>
+              <span class="price-num" data-clp="3700000" data-usd="3831">~$3.700.000 CLP</span>
+            </div>
+          </div>
+
+          <div class="specs-grid-mini">
+            <div class="spec-cell"><div class="spec-cell-lbl">VRAM Total</div><div class="spec-cell-val">48 GB GDDR6X</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Bandwidth Eff.</div><div class="spec-cell-val">~435 GB/s</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Velocidad MoE</div><div class="spec-cell-val">81 - 118 tok/s</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Modelos</div><div class="spec-cell-val">35B Q8 / 70B Q4</div></div>
+          </div>
+
+          <ul class="bullet-list">
+            <li>48 GB permiten correr modelos de 70B o tener múltiples sesiones paralelas sin desborde.</li>
+            <li>Cuesta la mitad de una 5090 con 50% más de memoria total.</li>
+            <li>Con puente NVLink, el prefill escala a 6.209 tok/s en prompt processing.</li>
+          </ul>
+          <div class="card-footer-tip">Excelente opción si tienes paciencia para configurar Tensor Parallelism en Linux.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dimension 1: Price / Economy (Exact Top 3) -->
+    <div id="dim-precio" class="dim-panel">
       <div class="card-grid-3">
         <!-- 3090 -->
         <div class="dim-card featured">
           <div class="badge-pill emerald">Top 1 · Mejor Entrada</div>
-          <div class="card-kicker">PRESUPUESTO ACCESIBLE</div>
+          <div class="card-kicker">MÁXIMO AHORRO EN 24 GB</div>
           <h3 class="card-title-lg">RTX 3090 24GB (Usada)</h3>
           <div class="card-sub">La puerta de entrada más económica a 24 GB de VRAM</div>
 
@@ -957,45 +1065,12 @@ footer a:hover { text-decoration: underline; }
           <div class="card-footer-tip">Revisar temperaturas de memorias GDDR6X al comprar usada.</div>
         </div>
 
-        <!-- 4090 Used / Deal -->
-        <div class="dim-card">
-          <div class="badge-pill cyan">Top 2 · Racional</div>
-          <div class="card-kicker">EQUILIBRIO RENDIMIENTO</div>
-          <h3 class="card-title-lg">RTX 4090 24GB</h3>
-          <div class="card-sub">El punto dulce de velocidad y estabilidad</div>
-
-          <div class="price-box-mini">
-            <div class="price-line">
-              <span class="price-lbl">GPU Nueva (Chile):</span>
-              <span class="price-num green" data-clp="2199990" data-usd="2278">$2.199.990 CLP</span>
-            </div>
-            <div class="price-line">
-              <span class="price-lbl">Build Completo (Est.):</span>
-              <span class="price-num" data-clp="4800000" data-usd="4970">~$4.800.000 CLP</span>
-            </div>
-          </div>
-
-          <div class="specs-grid-mini">
-            <div class="spec-cell"><div class="spec-cell-lbl">VRAM</div><div class="spec-cell-val">24 GB GDDR6X</div></div>
-            <div class="spec-cell"><div class="spec-cell-lbl">Bandwidth</div><div class="spec-cell-val">1.008 GB/s</div></div>
-            <div class="spec-cell"><div class="spec-cell-lbl">Velocidad 120k</div><div class="spec-cell-val">69.8 tok/s</div></div>
-            <div class="spec-cell"><div class="spec-cell-lbl">Consumo</div><div class="spec-cell-val">450W</div></div>
-          </div>
-
-          <ul class="bullet-list">
-            <li><strong>55% del precio de la 5090</strong> entregando más velocidad que la API de Claude Sonnet.</li>
-            <li>Mantiene 69.8 tok/s medidos en contextos largos de 120k tokens.</li>
-            <li>Excelente eficiencia energética frente a la serie 3000.</li>
-          </ul>
-          <div class="card-footer-tip">Disponible en MegaBytes por transferencia ($2.199.990).</div>
-        </div>
-
         <!-- 4070 Ti Super -->
         <div class="dim-card">
-          <div class="badge-pill amber">Top 3 · Ultra Presupuesto</div>
-          <div class="card-kicker">MÍNIMO RECOMENDADO</div>
+          <div class="badge-pill cyan">Top 2 · Nueva con Garantía</div>
+          <div class="card-kicker">NUEVA DE TIENDA & 16 GB VRAM</div>
           <h3 class="card-title-lg">RTX 4070 Ti Super 16GB</h3>
-          <div class="card-sub">Nueva con garantía para modelos ligeros</div>
+          <div class="card-sub">Para quienes buscan comprar nuevo sin superar el millón</div>
 
           <div class="price-box-mini">
             <div class="price-line">
@@ -1011,21 +1086,54 @@ footer a:hover { text-decoration: underline; }
           <div class="specs-grid-mini">
             <div class="spec-cell"><div class="spec-cell-lbl">VRAM</div><div class="spec-cell-val">16 GB GDDR6X</div></div>
             <div class="spec-cell"><div class="spec-cell-lbl">Bandwidth</div><div class="spec-cell-val">672 GB/s</div></div>
-            <div class="spec-cell"><div class="spec-cell-lbl">Modelos</div><div class="spec-cell-val">8B a 14B Q4</div></div>
-            <div class="spec-cell"><div class="spec-cell-lbl">Consumo</div><div class="spec-cell-val">285W</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Modelos</div><div class="spec-cell-val">7B, 8B y 14B Q4</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Consumo</div><div class="spec-cell-val">285W (Eficiente)</div></div>
           </div>
 
           <ul class="bullet-list">
-            <li>GPU moderna con garantía local para quienes no quieren comprar usado.</li>
+            <li>GPU moderna de arquitectura Ada Lovelace con garantía local en Chile.</li>
             <li>Excelente para modelos ligeros como Qwen 2.5 Coder 7B/14B o DeepSeek R1 14B.</li>
             <li>16 GB son estrechos para modelos 35B MoE con contexto largo.</li>
           </ul>
-          <div class="card-footer-tip">Ideal para presupuestos ajustados con foco en modelos de 7B a 14B.</div>
+          <div class="card-footer-tip">Ideal para presupuestos de $2M CLP con foco en modelos de 7B a 14B.</div>
+        </div>
+
+        <!-- 3080 12GB / 4070 Super -->
+        <div class="dim-card">
+          <div class="badge-pill amber">Top 3 · Ultra Económica</div>
+          <div class="card-kicker">MÍNIMO COSTO ABSOLUTO</div>
+          <h3 class="card-title-lg">RTX 3080 12GB / 4070 Super</h3>
+          <div class="card-sub">Inferencia básica para modelos de 7B y 8B</div>
+
+          <div class="price-box-mini">
+            <div class="price-line">
+              <span class="price-lbl">GPU Usada/Nueva (Chile):</span>
+              <span class="price-num green" data-clp="550000" data-usd="570">~$550.000 CLP</span>
+            </div>
+            <div class="price-line">
+              <span class="price-lbl">Build Completo (Est.):</span>
+              <span class="price-num" data-clp="1600000" data-usd="1657">~$1.600.000 CLP</span>
+            </div>
+          </div>
+
+          <div class="specs-grid-mini">
+            <div class="spec-cell"><div class="spec-cell-lbl">VRAM</div><div class="spec-cell-val">12 GB GDDR6X</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Bandwidth</div><div class="spec-cell-val">504 - 912 GB/s</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Velocidad 8B</div><div class="spec-cell-val">~110 tok/s</div></div>
+            <div class="spec-cell"><div class="spec-cell-lbl">Consumo</div><div class="spec-cell-val">220W - 350W</div></div>
+          </div>
+
+          <ul class="bullet-list">
+            <li>Permite armar un equipo completo por menos de $1.6M CLP (~$1.650 USD).</li>
+            <li>Ejecuta modelos como Qwen 2.5 Coder 7B o Llama 3.1 8B a más de 100 tok/s.</li>
+            <li>12 GB no alcanzan para modelos 35B MoE (requieren 22 GB).</li>
+          </ul>
+          <div class="card-footer-tip">La mejor opción si tu flujo de trabajo se basa 100% en modelos de 7B a 8B.</div>
         </div>
       </div>
     </div>
 
-    <!-- Dimension 2: Maximum Speed -->
+    <!-- Dimension 2: Maximum Speed (Exact Top 3) -->
     <div id="dim-velocidad" class="dim-panel">
       <div class="card-grid-3">
         <!-- 5090 -->
@@ -1130,7 +1238,7 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <!-- Dimension 3: Maximum Capacity -->
+    <!-- Dimension 3: Maximum Capacity (Exact Top 3) -->
     <div id="dim-capacidad" class="dim-panel">
       <div class="card-grid-3">
         <!-- Strix Halo -->
@@ -1234,7 +1342,7 @@ footer a:hover { text-decoration: underline; }
       </div>
     </div>
 
-    <!-- Dimension 4: Concurrency & Agents -->
+    <!-- Dimension 4: Concurrency & Agents (Exact Top 3) -->
     <div id="dim-concurrencia" class="dim-panel">
       <div class="card-grid-3">
         <!-- 5090 Multi-Agent -->
@@ -1640,7 +1748,7 @@ function setCurrency(curr) {
 }
 
 function showDimension(dimId) {
-  document.querySelectorAll('.dim-tab-btn').forEach((btn, idx) => {
+  document.querySelectorAll('.dim-tab-btn').forEach((btn) => {
     btn.classList.toggle('active', btn.getAttribute('onclick').includes(dimId));
   });
   document.querySelectorAll('.dim-panel').forEach(panel => {
